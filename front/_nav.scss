@@ -1,0 +1,43 @@
+$color2: #2594AD;
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 6% 10px 3%;
+    
+
+    &__ul {
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+        width: 65%;
+        margin: auto;
+
+        &__item {
+            
+            font-family: Montserrat;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 30px;
+            letter-spacing: -0.015em;
+            color: $color2;
+
+            & a {
+                text-decoration:none;
+            }
+
+            & a:visited {
+                color: $color2;    
+            }
+
+            & a:active {
+                color: $color2;    
+            }
+
+            padding: 0 7% 0 0;
+
+        }  
+    }
+
+}

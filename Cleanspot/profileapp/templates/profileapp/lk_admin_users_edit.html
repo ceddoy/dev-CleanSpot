@@ -1,0 +1,27 @@
+{% extends 'profileapp/base.html' %}
+
+{% block content %}
+<form id="form-edit-users" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mt-3 w-50 mx-auto">
+        {{ form.user_type.errors }}
+        {{ form.user_type }}
+        {{ form.title.errors }}
+        {{ form.title }}
+        {{ form.name_display_site.errors }}
+        {{ form.name_display_site }}
+        {{ form.phone_number.errors }}
+        {{ form.phone_number }}
+        {{ form.email.errors }}
+        {{ form.email }}
+        {{ form.inn_kpp.errors }}
+        {{ form.inn_kpp }}
+        {{ form.city.errors }}
+        {{ form.city }}
+        {{ form.password.errors }}
+        {{ form.password }}
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
+    </div>
+</form>
+{% endblock content%}

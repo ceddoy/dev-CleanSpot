@@ -1,0 +1,21 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if user.is_active %}
+        <h3>Поздравляем!</h3>
+        <br>
+        <h4>Пользователь {{ user }} подтвержден.</h4>
+    {% else %}
+        <h3>Верификация не пройдена. </h3>
+        <br>
+        <h4>Истекло действие активационного ключи.</h4>
+        <h4>Зарегистрируйтесь заново.</h4>
+    {% endif %}
+    <br>
+    <button class="btn btn-round form-control">
+        <a href="{% url 'auth:login' %}" class="">на сайт</a>
+    </button>
+
+{% endblock %}

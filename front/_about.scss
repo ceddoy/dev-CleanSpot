@@ -1,0 +1,45 @@
+.about {
+    height: 830px;
+    padding: 157px 27% 0 27%;
+    // text-align: center;
+    box-sizing: border-box;
+
+    background: #DDEEEB;
+
+    & h2 {
+        margin:0px auto 157px auto;
+        text-align: center;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 72px;
+        letter-spacing: -0.015em;
+        color: #2594AD;
+    }
+
+    & h3 {
+        margin: 0px auto 24px auto;
+        text-align: center;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 18px;
+        letter-spacing: -0.015em;
+        color: #E47607;    
+    }
+
+    & p {
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: -0.015em;
+        color: #2594AD;    
+    }
+}

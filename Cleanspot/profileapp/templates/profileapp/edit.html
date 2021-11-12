@@ -1,0 +1,34 @@
+{% extends 'authapp/base.html' %}
+
+{% block content %}
+    <div class="h2 text-center head">
+        {{ title|title }}
+    </div>
+    <form class="form-horizontal" action="{% url 'edit:edit' user.email %}" method="POST">
+        {% csrf_token %}
+        {{ edit_form.as_p }}
+        <input class="form-control" type="submit" value="сохранить">
+    </form>
+    <button class="btn btn-link form-control">
+        <a href="{% url 'edit:change_password' user.email %}">
+            сменить пароль
+        </a>
+    </button>
+    <button class="btn btn-link form-control">
+        <a href="{% url 'main:main' %}">
+            на главную
+        </a>
+    </button>
+    <button class="btn btn-link form-control">
+        <a href="{% url 'auth:logout' %}">
+            выход
+        </a>
+    </button>
+    {% if is_moder %}
+        <button class="btn btn-link form-control">
+            <a href="{% url 'edit:lk_admin_cleaner_add' user.email %}">
+                добавить партнера
+            </a>
+        </button>
+    {% endif %}
+{% endblock %}

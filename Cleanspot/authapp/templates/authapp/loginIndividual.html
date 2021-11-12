@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <section class="nav">
+        <ul class="nav__ul">
+            <li class="nav__ul__item">
+                <a href="#">Как это работает</a>
+            </li>
+            <li class="nav__ul__item">
+                <a href="#">О сервисе</a>
+            </li>
+            <li class="nav__ul__item">
+                <a href="#">Для Партнеров</a>
+            </li>
+        </ul>
+    </section>
+    <section class="registration-main">
+        <h2>Добро пожаловать!</h2>
+        <p class="registration-main__p">Заполните поля для входа</p>
+        <form action="" class="login_form" method="post">
+            {% csrf_token %}
+            {{ login_form.non_field_errors }}
+            {{ login_form.email.errors }}
+            {{ login_form.password.errors }}
+            <div class="login_form__element"><label class="login_form__input_h" for="login">
+                {{ login_form.email.label }}</label>
+            </div>
+            <div class="login_form__element">{{ login_form.email }}</div>
+
+            <div class="login_form__element"><label class="login_form__input_h" for="password">
+                {{ login_form.password.label }}</label>
+            </div>
+            <div class="login_form__element">{{ login_form.password }}</div>
+            <button type="submit" class="button button_darkgreen__filled login_form__button">Вход</button>
+        </form>
+        <div class="restore">
+            <div><span class="restore__o">Нет аккаунта? </span><a href="{% url 'auth:register' %}"><span
+                    class="restore__g">Зарегистрироваться</span></a></div>
+            <div><a href="{% url 'auth:reset_password' %}"><span class="restore__g">Забыли пароль?</span></a></div>
+        </div>
+    </section>
+    <footer class="registration-main__bottom-p">Отправляя код, вы&nbsp;принимаете условия <a
+            href="">&quot;Пользовательского соглашения&laquo;</a> и даете <a href="">&laquo;Согласие
+        на&nbsp;обработку персональных данных&raquo;</a>. Ваш номер телефона не&nbsp;будет использоваться
+        в&nbsp;смс-рассылках
+        и&nbsp;рекламных акциях.
+        Любые Ваши данные остаются в&nbsp;безопасности.
+    </footer>
+</div>
+</body>
+
+</html>
