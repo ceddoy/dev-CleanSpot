@@ -1,0 +1,36 @@
+{% extends 'profileapp/base.html' %}
+
+{% block content %}
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th scope="col">Наименование</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Имя отображения на сайте</th>
+            <th scope="col">email</th>
+            <th scope="col">ИНН/КПП</th>
+            <th scope="col">Город</th>
+            <th scope="col">Пароль</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cleaner in cleaners %}
+            <tr>
+                <td>{{ cleaner.title }}</td>
+                <td>{{ cleaner.phone_number }}</td>
+                <td>{{ cleaner.name_display_site }}</td>
+                <td>{{ cleaner.email }}</td>
+                <td>{{ cleaner.inn_kpp }}</td>
+                <td>{{ cleaner.city }}</td>
+                <td>*****</td>
+                <td>Block</td>
+                <td><a href="{% url 'edit:lk_admin_del' user.email cleaner.pk %}">Del</a></td>
+                <td><a href="{% url 'edit:lk_admin_cleaner_edit' user.email cleaner.pk %}">Edit</a>></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

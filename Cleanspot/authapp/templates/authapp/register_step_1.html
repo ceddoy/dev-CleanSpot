@@ -1,0 +1,37 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="registration-main">
+        <h2>Добро пожаловать!</h2>
+        <p class="registration-main__p">Зарегистрироваться как:</p>
+
+        <form action="{% url 'auth:register_step_2' %}" method="get">
+            <div class="registration-main__options">
+
+                <input class="registration-input-hide" type="radio" id="registerChoice1" name="register"
+                       value="individual" checked>
+                <label class="registration-main__options__item registration-main__options__item__individual"
+                       for="registerChoice1"><p>Частное лицо</p></label>
+
+                <input class="registration-input-hide" type="radio" id="registerChoice2" name="register"
+                       value="company">
+                <label class="registration-main__options__item registration-main__options__item__company"
+                       for="registerChoice2"><p>Юр. лицо</p></label>
+
+                <input class="registration-input-hide" type="radio" id="registerChoice3" name="register"
+                       value="cleaner">
+                <label class="registration-main__options__item registration-main__options__item__cleaner"
+                       for="registerChoice3"><p>Клинер</p></label>
+            </div>
+            <div>
+                <button type="submit" class="button button_darkgreen__filled registration__main__button">Далее</button>
+            </div>
+        </form>
+
+        <div class="restore">
+            <div><a href="{% url 'main:main' %}"><span class="restore__g">На главную</span></a></div>
+        </div>
+
+    </section>
+{% endblock content %}

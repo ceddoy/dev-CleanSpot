@@ -1,0 +1,28 @@
+{% extends 'profileapp/base.html' %}
+
+{% block content %}
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th scope="col">Наименование</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">email</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for us in users %}
+            <tr>
+                <td>{{ us.title }}</td>
+                <td>{{ us.phone_number }}</td>
+                <td>{{ us.email }}</td>
+                <td>Block</td>
+                <td><a href="{% url 'profileapp:lk_admin_users_del' user.email us.pk %}">Del</a></td>
+                <td><a href="{% url 'profileapp:lk_admin_users_edit' user.email us.pk %}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

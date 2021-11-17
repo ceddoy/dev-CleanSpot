@@ -1,0 +1,18 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+        <section class="registration-main">
+            {% if user.is_active %}
+                <h2>Поздравляем!</h2>
+                <br>
+                <h2>Пользователь {{ user }} подтвержден.</h2>
+            {% else %}
+                <h2>Верификация не пройдена. </h2>
+                <br>
+                <p class="registration-main__p">Истекло действие активационного ключа.</p>
+                <p class="registration-main__p">Зарегистрируйтесь заново.</p>
+            {% endif %}
+            <button onclick="window.location.href='{% url 'auth:login' %}'" type="submit" class="button button_darkgreen__filled login_form__button">Войти</button>
+        </section>
+{% endblock content %}

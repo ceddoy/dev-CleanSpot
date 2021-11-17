@@ -1,0 +1,82 @@
+$color1: #FFF;
+$color2: #2594AD;
+$color3: #3D77EA;
+$color4: #57C9B5;
+$color5: #E4E4E4;
+
+.button {
+    margin: auto;
+
+    height: 70px;
+    letter-spacing: -0.015em;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    height: 60px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    padding: 15px 60px;
+
+    &-visible {
+        display: block;
+    }
+
+    &-unvisible {
+        display: none;
+    }
+
+    &:hover {
+        background: transparent;
+        transition-duration: 200ms;
+    }
+
+    &_blue__filled {
+        color: $color1; 
+        background-color: $color3; 
+        &:hover {
+            color: $color3;
+            border-color: $color3;
+        }  
+    }
+
+    &_darkgreen__filled {
+        color: $color1; 
+        background-color: $color2; 
+        &:hover {
+            color: $color2;
+            border-color: $color2;
+        }  
+    }
+
+    &_lightgreen__filled {
+        color: $color1; 
+        background-color: $color4; 
+        &:hover {
+            color: $color4;
+            border-color: $color4;
+        }    
+    }
+
+    &_disabled__filled {
+        color: $color1; 
+        background-color: $color5; 
+        &:hover {
+            color: $color5;
+            border-color: $color5;
+        }    
+    }
+
+    &_white__filled {
+        color: $color2; 
+        background-color: $color1; 
+        &:hover {
+            color: $color2;
+            border-color: $color1;
+        }    
+    }
+
+
+}
+

@@ -1,0 +1,26 @@
+{% load static %}
+
+<a href="#"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+<ul class="nav__ul">
+    <li class="nav__ul__item">
+        <a href="#">Как это работает</a>
+    </li>
+    <li class="nav__ul__item">
+        <a href="#">О сервисе</a>
+    </li>
+    <li class="nav__ul__item">
+        <a href="{% url 'auth:register_cleaner' %}">Для Партнеров</a>
+    </li>
+</ul>
+<button class="button button_darkgreen__filled button-visible">
+    {% if not user.is_authenticated %}
+        <a href="{% url 'auth:login' %}">
+            Вход
+        </a>
+    {% else %}
+        <a href="{% url 'edit:edit' user.email %}">
+            {{ user.email }}
+        </a>
+    {% endif %}
+</button>
+<button class="button button_darkgreen__filled button-unvisible">

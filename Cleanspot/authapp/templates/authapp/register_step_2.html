@@ -1,0 +1,42 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+        <section class="registration-main">
+            <h2>Добро пожаловать!</h2>
+            <p class="registration-main__p">Заполните поля для регистрации</p>
+
+            <form action="" class="login_form" method="post">
+                {% csrf_token %}
+                {{ register_form.non_field_errors }}
+
+                {{ register_form.user_type.errors }}
+                {{ register_form.user_type }}
+
+                {{ register_form.email.errors }}
+                <div class="login_form__element">
+                    <label class="login_form__input_h" for="login">{{ register_form.email.label }}</label>
+                </div>
+                <div class="login_form__element">{{ register_form.email }}</div>
+
+                {{ register_form.password1.errors }}
+                <div class="login_form__element">
+                    <label class="login_form__input_h" for="password">{{ register_form.password1.label }}</label>
+                </div>
+                <div class="login_form__element">{{ register_form.password1 }}</div>
+
+                {{ register_form.password2.errors }}
+                <div class="login_form__element">
+                    <label class="login_form__input_h" for="password">{{ register_form.password2.label }}</label>
+                </div>
+                <div class="login_form__element">{{ register_form.password2 }}</div>
+
+                {{ register_form.phone_number.errors }}
+                <div class="login_form__element">
+                    <label class="login_form__input_h" for="phone">{{ register_form.phone_number.label }}</label>
+                </div>
+                <div class="login_form__element">{{ register_form.phone_number }}</div>
+                <button type="submit" class="button button_darkgreen__filled login_form__button">Регистрация</button>
+            </form>
+        </section>
+{% endblock content %}

@@ -1,0 +1,31 @@
+$color1: #FFF;
+$color2: #2594AD;
+$color3: #3D77EA;
+$color4: #57C9B5;
+$color5: #E4E4E4;
+$color6: #000000;
+
+
+@import "_buttons.scss";
+@import "_checkbox.scss";
+@import "_nav.scss";
+@import "_topbanner.scss";
+@import "_howitworks.scss";
+@import "_order.scss";
+@import "_about.scss";
+@import "_questions.scss";
+@import "_footer.scss";
+
+@import "_registration.scss";
+
+.container{
+    margin: 0 auto;
+    max-width: 1440px;
+    
+    font-family: Montserrat;
+    
+}
+
+
+
+

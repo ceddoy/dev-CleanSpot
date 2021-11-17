@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <section class="nav">
+            {% include 'mainapp/includes/inc_main_menu.html' %}
+        </section>
+        <section class="top-banner">
+            <h2>Выбери свой клининг</h2>
+            <p>Более 900 клининговых компаний будут конкурировать за Вашу уборку</p>
+            <button class="button button_white__filled">Выбрать</button>
+        </section>
+        <section class="how-it-works">
+            <h2>Как это работает?</h2>
+            <div class="how-it-works__options">
+                <div class="how-it-works__options__item">
+                    <h3>Заявка</h3>
+                    <p>Заполни форму - что и как нужно убрать</p>
+                </div>
+                <div class="how-it-works__options__item">
+                    <h3>Ответ</h3>
+                    <p>На твою почту придет письмо с предложениями от всех доступных исполнителей</p>
+                </div>
+                <div class="how-it-works__options__item">
+                    <h3>Выбор</h3>
+                    <p>Отправь ответное письмо с твоим выбором лучшего исполнителя</p>
+                </div>
+                <div class="how-it-works__options__item">
+                    <h3>Результат</h3>
+                    <p>Получи уборку своей мечты в выбранный день</p>
+                </div>
+            </div>
+        </section>
+        <section class="order">
+            <div class="order__type">
+                <div class="order__type__item order__type__item_checked">Частное лицо</div>
+                <div class="order__type__item">Юридическое лицо</div>
+            </div>
+            <div class="order__type">
+                <div class="order__type__item order__type__item_checked">Поддерживающая</div>
+                <div class="order__type__item">Генеральная</div>
+                <div class="order__type__item">После ремонта</div>
+                <div class="order__type__item">Мойка окон</div>
+            </div>
+            <div class="order__more">
+                <div class="order__more__item">
+                    <h3>Поддерживающая уборка</h3>
+                    <p>Сухая/влажная уборка пола,
+                        без перемещения предметов интерьера</p>
+                    <p>Удаление пыли с открытых горизонтальных поверхностей</p>
+                    <p>Мойка раковины, унитаза, ванной</p>
+                    <p>Вынос мусора</p>
+                </div>
+                <div class="order__more__item">
+                    <h3>Дополнительные опции</h3>
+                    <div class="checkbox__wrapper">
+                        <input class="custom__checkbox" type="checkbox" id="checkbox1">
+                        <label for="checkbox1">Духовой шкаф</label>
+                    </div>
+                    <div class="checkbox__wrapper">
+                        <input class="custom__checkbox" type="checkbox" id="checkbox2">
+                        <label for="checkbox2">Духовой шкаф</label>
+                    </div>
+                    <div class="checkbox__wrapper">
+                        <input class="custom__checkbox" type="checkbox" id="checkbox3">
+                        <label for="checkbox3">Духовой шкаф</label>
+                    </div>
+                    <div class="checkbox__wrapper">
+                        <input class="custom__checkbox" type="checkbox" id="checkbox4">
+                        <label for="checkbox4">Духовой шкаф</label>
+                        <textarea class="optional__text"></textarea>
+                    </div>
+                    <div class="checkbox__wrapper">
+                        <input class="custom__checkbox" type="checkbox" id="checkbox5">
+                        <label for="checkbox5">Дополнительные пожелания</label>
+                        <textarea class="optional__text"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button class="button button_darkgreen__filled button-visible order__btm-button">Далее</button>
+        </section>
+        <section class="about">
+            <h2>О сервисе CleanGuru</h2>
+            <h3>Немного о нас</h3>
+            <p>Мы — агрегатор для заказа профессиональной уборки, путем выбора и сравненния предложений от большого
+                количества клининговых компаний. Наша миссия - сделать процесс заказа уборки максимально быстрым и
+                выгодным для потребителя, расширив рынок для исполнителей.</p>
+        </section>
+        <section class="questions">
+            <h2>Вопросы и ответы</h2>
+            <div class="questions__wrapper">
+                <div class="questions__categories">
+                    <h3>Вопросы</h3>
+                    <div class="questions__categories__item questions__categories__item_active">Домашняя уборка</div>
+                    <div class="questions__categories__item">Офисная уборка</div>
+                    <div class="questions__categories__item">Типы уборки</div>
+                    <div class="questions__categories__item">Оплата уборки</div>
+                    <div class="questions__categories__item">Проблемы с заказом</div>
+                </div>
+                <div class="questions__items">
+                    <h3>Домашняя уборка</h3>
+                    <div class="questions__item">
+                        <input type="checkbox" id="faq-1">
+                        <h4><label for="faq-1">Сможет клинер постирать вещи?</label></h4>
+                        <div class="questions__item__desc">
+                            <p>Если в дополнительных услугах вы отметите «стирка вещей», то клинер постирает все ваши
+                                вещи,
+                                которые находятся в стиральной машине.
+                                ВНИМАНИЕ! Сортировка вещей в стиральной машине- обязанность клиента. Клинер не несёт за
+                                это
+                                ответственность.</p>
+                        </div>
+                    </div>
+                    <div class="questions__item">
+                        <input type="checkbox" id="faq-2">
+                        <h4><label for="faq-2">Домашняя уборка?</label></h4>
+                        <div class="questions__item__desc">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Mollitia alias debitis magnam voluptatem! Aperiam blanditiis magni,
+                                rerum quasi cupiditate quos? Assumenda animi, corrupti aspernatur
+                                nostrum illo debitis perferendis facere amet.</p>
+                        </div>
+                    </div>
+                    <div class="questions__item">
+                        <input type="checkbox" id="faq-3">
+                        <h4><label for="faq-3">Вынесут ли лоток питомца?</label></h4>
+                        <div class="questions__item__desc">
+                            <p>Если в дополнительных услугах вы отметите «стирка вещей», то клинер постирает все ваши
+                                вещи,
+                                которые находятся в стиральной машине.
+                                ВНИМАНИЕ! Сортировка вещей в стиральной машине- обязанность клиента. Клинер не несёт за
+                                это
+                                ответственность.</p>
+                        </div>
+                    </div>
+                    <div class="questions__item">
+                        <input type="checkbox" id="faq-4">
+                        <h4><label for="faq-4">Сможет клинер погладить одежду?</label></h4>
+                        <div class="questions__item__desc">
+                            <p>Если в дополнительных услугах вы отметите «стирка вещей», то клинер постирает все ваши
+                                вещи,
+                                которые находятся в стиральной машине.
+                                ВНИМАНИЕ! Сортировка вещей в стиральной машине- обязанность клиента. Клинер не несёт за
+                                это
+                                ответственность.</p>
+                        </div>
+                    </div>
+                    <div class="questions__item">
+                        <input type="checkbox" id="faq-5">
+                        <h4><label for="faq-5">Вытирает ли клинер пыль с техники?</label></h4>
+                        <div class="questions__item__desc">
+                            <p>Если в дополнительных услугах вы отметите «стирка вещей», то клинер постирает все ваши
+                                вещи,
+                                которые находятся в стиральной машине.
+                                ВНИМАНИЕ! Сортировка вещей в стиральной машине- обязанность клиента. Клинер не несёт за
+                                это
+                                ответственность.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="footer">
+            <div class="footer__logo"><a href="#"><img src="{% static 'img/logo.png' %}" alt="logo"></a></div>
+            <hr>
+            <div class="footer__social">
+                <a class="footer__social__link" href="#">
+                    <div>
+                        <p class="fab fa-facebook-f"></p>
+                    </div>
+                </a>
+                <a class="footer__social__link" href="#">
+                    <div>
+                        <p class="fab fa-twitter"></p>
+                    </div>
+                </a>
+                <a class="footer__social__link" href="#">
+                    <div>
+                        <p class="fab fa-google-plus-g"></p>
+                    </div>
+                </a>
+                <a class="footer__social__link" href="#">
+                    <div>
+                        <p class="fab fa-pinterest-p"></p>
+                    </div>
+                </a>
+            </div>
+            <ul class="footer__bottom-menu">
+                <li class="footer__bottom-menu__item"><a href="#">Вопросы и ответы</a></li>
+                <li class="footer__bottom-menu__item"><a href="#">Контакты</a></li>
+                <li class="footer__bottom-menu__item"><a href="#">О сервисе</a></li>
+                <li class="footer__bottom-menu__item"><a href="#">Пользовательское соглашение</a></li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>

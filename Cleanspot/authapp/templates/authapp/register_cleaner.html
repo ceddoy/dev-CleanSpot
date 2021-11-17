@@ -1,0 +1,29 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="registration-main">
+        <h2>Информация для партнёра</h2>
+        <p class="registration-main__p">В компании «CleanGuru» работают клинеры с опытом уборки жилых и коммерческих помещений более 3 лет.</p>
+        <p class="registration-main__p">Нельзя быть экспертами во всем, но мы стараемся. Наши клиннеры наведут порядок во всей квартире, в том числе в ванной и на кухне. И еще мы одежду аккуратно складываем, расставляем обувь, меняем постельное бельё и застилаем кровать.</p>
+        <p class="registration-main__p">Оставьте свои контакты и мы с вами свяжемся!</p>
+        <form action="" class="login_form" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="login_form__element">
+                <label class="login_form__input_h" for="name">{{ form.name.label }}</label>
+            </div>
+            <div class="login_form__element">{{ form.name }}</div>
+
+            <div class="login_form__element"><label class="login_form__input_h" for="phone_number">
+                {{ form.phone_number.label }}</label>
+            </div>
+            <div class="login_form__element">{{ form.phone_number }}</div>
+            <button type="submit" class="button button_darkgreen__filled login_form__button">Отправить</button>
+        </form>
+        <div class="restore">
+            <div><a href="{% url 'main:main' %}"><span class="restore__g">На главную</span></a></div>
+        </div>
+    </section>
+{% endblock content %}

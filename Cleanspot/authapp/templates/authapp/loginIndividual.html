@@ -1,0 +1,31 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="registration-main">
+        <h2>Добро пожаловать!</h2>
+        <p class="registration-main__p">Заполните поля для входа</p>
+        <form action="" class="login_form" method="post">
+            {% csrf_token %}
+            {{ login_form.non_field_errors }}
+            {{ login_form.email.errors }}
+            {{ login_form.password.errors }}
+
+            <div class="login_form__element">
+                <label class="login_form__input_h" for="login">{{ login_form.email.label }}</label>
+            </div>
+            <div class="login_form__element">{{ login_form.email }}</div>
+
+            <div class="login_form__element"><label class="login_form__input_h" for="password">
+                {{ login_form.password.label }}</label>
+            </div>
+            <div class="login_form__element">{{ login_form.password }}</div>
+            <button type="submit" class="button button_darkgreen__filled login_form__button">Вход</button>
+        </form>
+        <div class="restore">
+            <div><span class="restore__o">Нет аккаунта? </span><a href="{% url 'auth:register_step_1' %}"><span
+                    class="restore__g">Зарегистрироваться</span></a></div>
+            <div><a href="{% url 'auth:reset_password' %}"><span class="restore__g">Забыли пароль?</span></a></div>
+        </div>
+    </section>
+{% endblock content %}

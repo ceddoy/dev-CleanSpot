@@ -1,0 +1,10 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+        <section class="registration-main">
+            <h2 class="second-h2">Ваше обращение отправлено.</h2>
+            <p class="registration-main__p">Пожалуйста, дождитесь телефонного звонка.</p>
+            <div><a href="{% url 'main:main' %}"><span class="restore__g">На главную</span></a></div>
+        </section>
+{% endblock content %}

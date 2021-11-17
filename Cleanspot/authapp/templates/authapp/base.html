@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document{% endblock title %}</title>
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% endblock css %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <section class="nav">
+            <ul class="nav__ul">
+                <li class="nav__ul__item">
+                    <a href="#">Как это работает</a>
+                </li>
+                <li class="nav__ul__item">
+                    <a href="#">О сервисе</a>
+                </li>
+                <li class="nav__ul__item">
+                    <a href="{% url 'auth:register_cleaner' %}">Для Партнеров</a>
+                </li>
+            </ul>
+        </section>
+
+        {% block content %}
+        {% endblock content %}
+
+        <footer class="registration-main__bottom-p">Отправляя код, вы&nbsp;принимаете условия <a
+            href="">&quot;Пользовательского соглашения&laquo;</a> и даете <a href="">&laquo;Согласие
+            на&nbsp;обработку персональных данных&raquo;</a>. Ваш номер телефона не&nbsp;будет использоваться
+        в&nbsp;смс-рассылках
+        и&nbsp;рекламных акциях.
+        Любые Ваши данные остаются в&nbsp;безопасности.</footer>
+    </div>
+</body>
+
+</html>
