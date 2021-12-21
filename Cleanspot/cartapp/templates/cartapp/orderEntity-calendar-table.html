@@ -1,0 +1,30 @@
+<table>
+    <caption id="month">
+        {{ month }}
+    </caption>
+    <caption id="year">
+        {{ year }}
+    </caption>
+    <tr>
+        <th>Пн</th>
+        <th>Вт</th>
+        <th>Ср</th>
+        <th>Чт</th>
+        <th>Пт</th>
+        <th>Сб</th>
+        <th>Вс</th>
+    </tr>
+    {% for week in calendar %}
+    <tr>
+        {% for day in week %}
+        <td {% if now.day == day.day and now.month == day.month and now.year == day.year %}
+            class="today"
+            {% endif %}>
+            {% if forloop.parentloop.first and day.day > 7%}
+            {% elif forloop.parentloop.last and day.day < 20 %}
+            {% else %}{{ day.day }}{% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>

@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'mainapp',
     'orderapp',
     'profileapp',
+    'cartapp',
 
     'phonenumber_field',
 ]

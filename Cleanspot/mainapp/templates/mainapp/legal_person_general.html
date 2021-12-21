@@ -1,0 +1,50 @@
+<div class="order__type">
+    <div class="order__type__item" onclick="getHtml('/main_order/private_person/supporting/');">Частное лицо</div>
+    <div class="order__type__item order__type__item_checked" onclick="getHtml('/main_order/legal_person/daily_as_scheduled/');">Юридическое лицо</div>
+</div>
+<div class="order__type">
+    <div class="order__type__item" onclick="getHtml('/main_order/legal_person/daily_as_scheduled/');">Ежедневная по графику</div>
+    <div class="order__type__item order__type__item_checked" onclick="getHtml('/main_order/legal_person/general/');">Генеральная</div>
+    <div class="order__type__item" onclick="getHtml('/main_order/legal_person/after_repairs/');">После ремонта</div>
+    <div class="order__type__item" onclick="getHtml('/main_order/legal_person/window_cleaning/');">Мойка окон</div>
+</div>
+<form action="" method="post" id="main_page_order_form">
+    {% csrf_token %}
+    {{ form.non_fields_errors }}
+    <div class="order__more">
+
+        <div class="order__more__item">
+            <h3>Генеральная уборка</h3>
+            {% for service in form.services %}
+                {% if service.data.value.instance.basic_service %}
+                    <p>
+                        <input class="custom__checkbox" name="{{ service.data.name }}" value="{{ service.data.value }}"
+                               type="{{ service.data.type }}" id="{{ service.id_for_label }}">
+                        <label for="{{ service.id_for_label }}">{{ service.choice_label }}</label>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="order__more__item">
+            <h3>Дополнительные опции</h3>
+            {% for service in form.services %}
+                {% if not service.data.value.instance.basic_service %}
+                    <div class="checkbox__wrapper">
+                        <input class="custom__checkbox" name="{{ service.data.name }}" value="{{ service.data.value }}"
+                               type="checkbox" id="{{ service.id_for_label }}">
+                        <label for="{{ service.id_for_label }}">{{ service.choice_label }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="checkbox__wrapper">
+                <input class="custom__checkbox" type="checkbox" id="checkbox5">
+                <label for="checkbox5">Дополнительные пожелания</label>
+                <textarea class="optional__text" id="{{ form.comment.id_for_label }}"
+                          name="{{ form.comment.label|lower }}"></textarea>
+                <label for="{{ form.comment.id_for_label }}"></label>
+            </div>
+        </div>
+    </div>
+
+    <button class="button button_darkgreen__filled button-visible order__btm-button" type="submit">Далее</button>
+</form>

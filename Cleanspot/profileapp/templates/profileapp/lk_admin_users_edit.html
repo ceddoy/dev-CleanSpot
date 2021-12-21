@@ -1,27 +1,24 @@
 {% extends 'profileapp/base.html' %}
+{% load static %}
 
 {% block content %}
-<form id="form-edit-users" action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    <div class="mt-3 w-50 mx-auto">
-        {{ form.user_type.errors }}
-        {{ form.user_type }}
-        {{ form.title.errors }}
-        {{ form.title }}
-        {{ form.name_display_site.errors }}
-        {{ form.name_display_site }}
-        {{ form.phone_number.errors }}
-        {{ form.phone_number }}
-        {{ form.email.errors }}
-        {{ form.email }}
-        {{ form.inn_kpp.errors }}
-        {{ form.inn_kpp }}
-        {{ form.city.errors }}
-        {{ form.city }}
-        {{ form.password.errors }}
-        {{ form.password }}
-        <button type="submit" class="btn btn-primary">Подтвердить</button>
-    </div>
-</form>
-{% endblock content%}
+    <section class="cabinet-main">
+        <h2>Личный кабинет администратора</h2>
+
+        {% include 'profileapp/include/inc_lk_admin_menu.html' %}
+        <form class="cabinet-form" id="form-edit-users" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="cabinet-form__inputs">
+                {% for field in form %}
+                    <div>
+                        {{ field.errors }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="button button_blue__filled">Подтвердить</button>
+            </div>
+        </form>
+    </section>
+{% endblock content %}

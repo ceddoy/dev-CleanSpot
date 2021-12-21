@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+    <link rel="stylesheet" href="{% static 'css/orderEntity-rooms.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
+  </head>
+  <body>
+    <!-- хедер -->
+    <table class="ordering-entity__header container">
+      <tr>
+        <td class="table-cell"><img src="{% static 'img/logo.png' %}" alt="logo" /></td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-type">Ежедневная по&nbsp;графику</p>
+          <p class="table-text">Тип уборки</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__days-week">Пн Ср Пт</p>
+          <p class="table-text">Дни недели</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-time">15.00 - 19.00</p>
+          <p class="table-text">Время уборки</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__number-staff">3</p>
+          <p class="table-text">Кол-во персонала</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__price">от 5000 руб</p>
+          <p class="table-text">СТОИМОСТЬ</p>
+        </td>
+      </tr>
+    </table>
+    <div class="rooms">
+      <h2 class="rooms-title">Введите адрес помещения</h2>
+      <form class="rooms__form" action="#" method="post">
+        <label class="rooms__form-type-of-housing" for="type-of-housing">
+          Тип жилья
+          <br />
+          <input type="text" id="type-of-housing" name="type-of-housing" />
+        </label>
+
+        <label class="rooms__form-square" for="square">
+          Площадь объекта м2
+          <br />
+          <input type="number" id="square" min="1" name="square" />
+        </label>
+
+        <label class="rooms__form-city" for="city">
+          Город
+          <br />
+          <input type="text" id="city" name="city" />
+        </label>
+
+        <label class="rooms__form-street" for="street">
+          Улица
+          <br />
+          <input type="text" id="street" name="street" value="ул. Вавилова" />
+        </label>
+
+        <label class="rooms__form-house" for="house">
+          Дом
+          <br />
+          <input type="number" min="1" id="house" name="house" />
+        </label>
+
+        <label class="rooms__form-intercom" for="intercom">
+          Домофон
+          <br />
+          <input type="text" id="intercom" name="intercom" />
+        </label>
+
+        <label class="rooms__form-entrance" for="entrance">
+          Подьезд
+          <br />
+          <input type="number" id="entrance" name="entrance" min="1" />
+        </label>
+
+        <label class="rooms__form-floor" for="floor">
+          Этаж
+          <br />
+          <input type="number" id="floor" name="floor" min="1" />
+        </label>
+
+        <button class="order-button" type="submit">Далее</button>
+      </form>
+    </div>
+  </body>
+</html>

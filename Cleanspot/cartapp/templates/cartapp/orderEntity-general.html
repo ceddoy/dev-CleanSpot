@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+    <link rel="stylesheet" href="orderEntity-general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
+  </head>
+  <body>
+    <!-- хедер -->
+    <table class="ordering-entity__header container">
+      <tr>
+        <td class="table-cell"><img src="img/logo.png" alt="logo" /></td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-type">Ежедневная по&nbsp;графику</p>
+          <p class="table-text">Тип уборки</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__days-week">Пн Ср Пт</p>
+          <p class="table-text">Дни недели</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-time">15.00 - 19.00</p>
+          <p class="table-text">Время уборки</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__number-staff">3</p>
+          <p class="table-text">Кол-во персонала</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__price">от 5000 руб</p>
+          <p class="table-text">СТОИМОСТЬ</p>
+        </td>
+      </tr>
+    </table>
+    <!-- юридическое лицо \ частное лицо -->
+    <div class="order-type">
+      <div class="order-type__individual">Частное лицо</div>
+      <div class="order-type__entity">Юридическое лицо</div>
+    </div>
+    <!-- типы уборки -->
+    <div class="cleaning-type">
+      <div class="cleaning-type__daily-schedule">Ежедневная по графику</div>
+      <div class="cleaning-type__general">Генеральная</div>
+      <div class="cleaning-type__after-renovation">После ремонта</div>
+      <div class="cleaning-type__window-cleaning">Мойка окон</div>
+    </div>
+
+    <!-- секция юридическое лицо генеральная уборка -->
+    <section class="spring-cleaning__section container">
+      <div class="wraper">
+        <div class="spring-cleaning">
+          <h2 class="spring-cleaning__title">Генеральная уборка</h2>
+          <label class="spring-cleaning__checkbox" for="">
+            <input type="checkbox" name="" id="" />
+            Сухая/влажная уборка пола, включая отодвигание небольшой мебели и
+            уборка в труднодоступных местах;
+          </label>
+          <label class="spring-cleaning__checkbox">
+            <input type="checkbox" name="" id="" />
+            Удаление пыли с мебели и деталей интерьера, включая удаление пыли
+            внутри мебели (при условии отсутствия личных вещей)
+          </label>
+          <label class="spring-cleaning__checkbox">
+            <input type="checkbox" name="" id="" />
+            Уборка и дезинфекция санузла
+          </label>
+        </div>
+        <div class="additional-options">
+          <h2 class="additional-options__title">Дополнительные опции</h2>
+          <lable class="additional-options__checkbox">
+            <input type="checkbox" name="" id="" />
+            Обеспыливание стен
+          </lable>
+          <lable class="additional-options__checkbox">
+            <input type="checkbox" name="" id="" />
+            Мойка санузла
+          </lable>
+          <lable class="additional-options__checkbox">
+            <input type="checkbox" name="" id="" />
+            Мойка окон
+          </lable>
+          <lable class="additional-options__checkbox">
+            <input type="checkbox" name="" id="" />
+            Очистка мебели (указать кол-во элементов
+          </lable>
+          <lable class="additional-options__checkbox">
+            <input type="checkbox" name="" id="" />
+            Очитска деталей интерьера (указать кол-во) и прочее (двери, розетки
+            и т.д.)
+          </lable>
+          <lable class="additional-options__checkbox">
+            <input type="checkbox" name="" id="" />
+            Дополнительные пожелания
+          </lable>
+        </div>
+      </div>
+      <button class="order-button" type="submit">Далее</button>
+    </section>
+  </body>
+</html>

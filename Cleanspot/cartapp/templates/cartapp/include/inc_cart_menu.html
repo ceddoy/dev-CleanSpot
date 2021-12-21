@@ -1,0 +1,30 @@
+<div class="order-type">
+    {% for item in user_type_for_service_type %}
+        <button class="order-type__button
+            {% if request.resolver_match.kwargs.usertypeforservicetype_slug == item.slug %}
+            order-type__active
+            {% endif %}
+            {% if forloop.first %}
+             border-left
+            {% elif forloop.last %}
+             border-right
+            {% endif %}"
+            onclick="window.location.href='{% url "cartapp:usertype_services" item.slug %}'">{{ item.description }}</button>
+    {% endfor %}
+</div>
+<div class="cleaning-type">
+    {% for item in service_type %}
+        <button class="cleaning-type__button
+            {% if request.resolver_match.kwargs.servisetype_slug == item.slug %}
+            cleaning-type__active
+            {% elif 'servisetype_slug' not in request.resolver_match.kwargs and forloop.first %}
+            cleaning-type__active
+            {% endif %}
+            {% if forloop.first %}
+             border-left
+            {% elif forloop.last %}
+             border-right
+            {% endif %}"
+            onclick="window.location.href='{% url "cartapp:servicetype_services" request.resolver_match.kwargs.usertypeforservicetype_slug item.slug %}'">{{ item.description }}</button>
+    {% endfor %}
+</div>

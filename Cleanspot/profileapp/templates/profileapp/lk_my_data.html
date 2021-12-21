@@ -1,10 +1,7 @@
-{% extends 'authapp/base_old.html' %}
+{% extends 'profileapp/base_lk_user_menu.html' %}
 
 {% block content %}
-    <div class="h2 text-center head">
-        {{ title|title }}
-    </div>
-    <form class="form-horizontal" action="{% url 'edit:edit' user.email %}" method="POST">
+    <form class="form-horizontal" action="{% url 'edit:lk_my_data' user.email %}" method="POST">
         {% csrf_token %}
         {{ edit_form.as_p }}
         <input class="form-control" type="submit" value="сохранить">

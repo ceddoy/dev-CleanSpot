@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+    <link rel="stylesheet" href="orderEntity-daily-schedule.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
+    <script>
+      function change(objName, min, max, step) {
+        let obj = document.getElementById(objName)
+        let tmp = +obj.value + step
+        if (tmp < min) tmp = min
+        if (tmp > max) tmp = max
+        obj.value = tmp
+        document.querySelector('.table-cell__number-staff').innerHTML = tmp
+      }
+    </script>
+  </head>
+  <body>
+    <!-- хедер -->
+    <table class="ordering-entity__header container">
+      <tr>
+        <td class="table-cell"><img src="img/logo.png" alt="logo" /></td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-type">Ежедневная по&nbsp;графику</p>
+          <p class="table-text">Тип уборки</p>
+        </td>
+        <td class="table-cell">
+          <span class="table-cell__days-week"></span>
+          <p class="table-text">Дни недели</p>
+        </td>
+        <td class="table-cell">
+          <span class="table-cell__cleaning-time" id="time">09.00 - 12.00</span>
+          <p class="table-text">Время уборки</p>
+        </td>
+        <td class="table-cell">
+          <span class="table-cell__number-staff">1</span>
+          <p class="table-text">Кол-во персонала</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__price">от 5000 руб</p>
+          <p class="table-text">СТОИМОСТЬ</p>
+        </td>
+      </tr>
+    </table>
+    <!-- юридическое лицо \ частное лицо -->
+    <div class="order-type">
+      <div class="order-type__individual">Частное лицо</div>
+      <div class="order-type__entity">Юридическое лицо</div>
+    </div>
+    <!-- типы уборки -->
+    <div class="cleaning-type">
+      <div class="cleaning-type__daily-schedule">Ежедневная по графику</div>
+      <div class="cleaning-type__general">Генеральная</div>
+      <div class="cleaning-type__after-renovation">После ремонта</div>
+      <div class="cleaning-type__window-cleaning">Мойка окон</div>
+    </div>
+    <!-- секция юридическое лицо ежедневная по графику -->
+    <section class="order container">
+      <div class="daily-schedule__menu">
+        <h2 class="daily-schedule__menu-title">Ежедневная по графику</h2>
+        <ol class="daily-schedule__menu-list">
+          <li class="daily-schedule__menu-item">
+            По каким дням недели уборка
+            <br />
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Пн', 0)"
+              />
+              <br />
+              Пн
+            </label>
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Вт', 1)"
+              />
+              <br />
+              Вт
+            </label>
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Ср', 2)"
+              />
+              <br />
+              Ср
+            </label>
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Чт', 3)"
+              />
+              <br />
+              Чт
+            </label>
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Пт', 4)"
+              />
+              <br />
+              Пт
+            </label>
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Сб', 5)"
+              />
+              <br />
+              Сб
+            </label>
+            <label class="lable-checkbox" for="">
+              <input
+                class="lable-checkbox__input"
+                type="checkbox"
+                onclick="daySchedule('Вс', 6)"
+              />
+              <br />
+              Вс
+            </label>
+          </li>
+          <!-- скрипт управления дня недели -->
+          <script>
+            function daySchedule(day, number) {
+              if (
+                document.getElementsByClassName('lable-checkbox__input')[number]
+                  .checked
+              ) {
+                document.querySelector('.table-cell__days-week').innerHTML +=
+                  ' ' + day
+              } else {
+                document.querySelector(
+                  '.table-cell__days-week',
+                ).innerHTML = document
+                  .querySelector('.table-cell__days-week')
+                  .innerHTML.replace(day, '')
+              }
+            }
+          </script>
+
+          <li class="daily-schedule__menu-item">
+            Какое время уборки &nbsp;
+            <br />
+            <a
+              href="#"
+              onclick='document.querySelector("#time").innerHTML ="09.00 - 12.00";'
+            >
+              &nbsp; 09.00 - 12.00 &nbsp;
+            </a>
+            <a
+              href="#"
+              onclick='document.querySelector("#time").innerHTML ="12.00 - 15.00";'
+            >
+              &nbsp; 12.00 - 15.00 &nbsp;
+            </a>
+
+            <a
+              href="#"
+              onclick='document.querySelector("#time").innerHTML ="15.00 - 19.00";'
+            >
+              &nbsp; 15.00 - 19.00
+            </a>
+          </li>
+
+          <li class="daily-schedule__menu-item">
+            Необходимое кол-во персонала (опционально)
+            <div class="daily-schedule__menu-item__number">
+              <button
+                class="number-minus"
+                type="button"
+                onClick="change('amount',0,50,-1);"
+              >
+                -
+              </button>
+              <input id="amount" type="number" value="1" />
+              <button
+                class="number-plus"
+                type="button"
+                onClick="change('amount',0,50,1);"
+              >
+                +
+              </button>
+            </div>
+          </li>
+          <li class="daily-schedule__menu-item">
+            Что нужно делать (клиент описывает сам)
+            <!-- <input type="text" size="50" /> -->
+          </li>
+        </ol>
+      </div>
+      <button class="order-button" type="submit">Далее</button>
+    </section>
+  </body>
+</html>

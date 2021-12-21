@@ -1,0 +1,76 @@
+<div class="order__type">
+    <div class="order__type__item" onclick="getHtml('/main_order/private_person/supporting/');">Частное лицо</div>
+    <div class="order__type__item order__type__item_checked"
+         onclick="getHtml('/main_order/legal_person/daily_as_scheduled/');">Юридическое лицо
+    </div>
+</div>
+<div class="order__type">
+    <div class="order__type__item order__type__item_checked"
+         onclick="getHtml('/main_order/legal_person/daily_as_scheduled/');">Ежедневная по графику
+    </div>
+    <div class="order__type__item" onclick="getHtml('/main_order/legal_person/general/');">Генеральная</div>
+    <div class="order__type__item" onclick="getHtml('/main_order/legal_person/after_repairs/');">После ремонта</div>
+    <div class="order__type__item" onclick="getHtml('/main_order/legal_person/window_cleaning/');">Мойка окон</div>
+</div>
+<form action="" method="post" id="main_page_order_form" style="display: flex; flex-direction: column; justify-content: center;">
+    {% csrf_token %}
+    {{ form.non_fields_errors }}
+    <div class="order__more__scheduled">
+        <h3>Ежедневная по графику</h3>
+        <ol class="daily-schedule__menu-list">
+            <li class="daily-schedule__menu-item">
+                По каким дням недели уборка
+                <br>
+                {% for day in form.cleaning_days %}
+                    <label class="lable-checkbox" for="{{ day.id_for_label }}">
+                        <input
+                                class="lable-checkbox__input"
+                                type="{{ day.data.type }}"
+                                value="{{ day.data.value }}"
+                                name="{{ day.data.name }}"
+                                id="{{ day.id_for_label }}"
+                                onclick="daySchedule('{{ day.data.label }}', {{ forloop.counter0 }})"
+                        >
+                        {{ day.data.label }}
+                    </label>
+                {% endfor %}
+            </li>
+
+            <li class="daily-schedule__menu-item">
+                Какое время уборки &nbsp;
+                <br/>
+                {% for time in form.cleaning_time %}
+                    <label class="label-cleaning-time" for="{{ time.id_for_label }}">
+                        <input
+                                class="input-cleaning-time"
+                                type="{{ time.data.type }}"
+                                value="{{ time.data.value }}"
+                                name="{{ time.data.name }}"
+                                id="{{ time.id_for_label }}"
+                                onclick="document.querySelector('.table-cell__cleaning-time').innerHTML ='{{ time.data.label }}';"
+                        >
+                        <span>{{ time.data.label }}</span>
+                    </label>
+                {% endfor %}
+            </li>
+
+            <li class="daily-schedule__menu-item">
+                Необходимое кол-во персонала (опционально)
+                <div class="daily-schedule__menu-item__number">
+                    <button class="number-minus" type="button" onClick="change('amount',0,50,-1);">-</button>
+                    {#                        <input id="amount" type="number" value="1"/>#}
+                    {{ form.number_stuff }}
+                    <button class="number-plus" type="button" onClick="change('amount',0,50,1);">+</button>
+                </div>
+            </li>
+            <li class="daily-schedule__menu-item">
+                <label for="{{ form.comment.id_for_label }}">Что нужно делать (клиент описывает сам)</label>
+                <textarea class="optional__text" id="{{ form.comment.id_for_label }}"
+                          name="{{ form.comment.label|lower }}"></textarea>
+                <!-- <input type="text" size="50" /> -->
+            </li>
+        </ol>
+    </div>
+
+    <button class="button button_darkgreen__filled button-visible order__btm-button" type="submit">Далее</button>
+</form>

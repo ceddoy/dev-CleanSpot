@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <section class="nav">
+            <ul class="nav__ul">
+                <li class="nav__ul__item">
+                    <a href="#">Как это работает</a>
+                </li>
+                <li class="nav__ul__item">
+                    <a href="#">О сервисе</a>
+                </li>
+                <li class="nav__ul__item">
+                    <a href="#">Для Партнеров</a>
+                </li>
+            </ul>
+        </section>
+        <section class="registration-main">
+            <h2>Информация для партнера</h2>
+            <p class="registration-main__p">В компании «CleanGuru» работают клинеры с опытом уборки жилых и коммерческих помещений более 3 лет.
+                </p>
+            <p class="registration-main__p">Нельзя быть экспертами во всем, но мы стараемся. Наши клиннеры наведут порядок во всей квартире, в том числе в ванной и на кухне. И еще мы одежду аккуратно складываем, расставляем обувь, меняем постельное бельё и застилаем кровать.</p>
+            <p class="registration-main__p">Оставьте свои контакты и мы с вами свяжемся!</p>
+            <form action="" class="login_form">
+                <div class="login_form__element"><label class="login_form__input_h" for="login">Имя *</label></div>
+                <div class="login_form__element"><input class="login_form__input" type="text" id="login"
+                        placeholder="Как к вам обращаться?"></div>
+                <div class="login_form__element"><label class="login_form__input_h" for="password">Телефон *</label>
+                </div>
+                <div class="login_form__element"><input class="login_form__input" type="password" id="password"
+                        placeholder="Введите телефон"></div>
+                <button type="submit" class="button button_darkgreen__filled login_form__button">Вход</button>
+            </form>
+            <div class="restore">
+                <div><span class="restore__o">Нет аккаунта? </span><a href="#"><span
+                            class="restore__g">Зарегистрироваться</span></a></div>
+                <div><a href="#"><span class="restore__g">Забыли пароль?</span></a></div>
+            </div>
+        </section>
+        
+    </div>
+</body>
+
+</html>

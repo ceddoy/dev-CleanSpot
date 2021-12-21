@@ -1,0 +1,143 @@
+{% extends 'cartapp/base.html' %}
+
+{% block content %}
+
+    <section class="window-cleaning__section container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h2 class="window-cleaning__title"></h2>
+            <div class="window-cleaning__types">
+                <div class="window-cleaning__ordinary-windows">
+                    <h2 class="window-cleaning__ordinary-windows__title">Обычные окна</h2>
+                    <label class="window-cleaning__ordinary-windows__glazing-area" for="">
+                        1.Площадь остекления м2 ( с одной стороны)
+                        <input type="number" name="{{ windows_form.fields.square_windows.label }}">
+                    </label>
+                    <p class="window-cleaning__ordinary-windows__text">Мойка окон</p>
+                    <label class="window-cleaning__ordinary-windows__amount" for="">
+                        Количество окон
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-num-win',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input
+                                type="number"
+                                id="amount-num-win"
+                                min="0"
+                                max="50"
+                                step="1"
+                                value="1"
+                                name="{{ windows_form.fields.num_windows.label }}"
+                                readonly
+                        />
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-num-win',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                    <label class="window-cleaning__ordinary-windows__amount" for="">
+                        Количество створок окон
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-win-fr',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input
+                                type="number"
+                                id="amount-win-fr"
+                                min="0"
+                                max="50"
+                                step="1"
+                                value="1"
+                                name="{{ windows_form.fields.num_window_frame.label }}"
+                                readonly
+                        />
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-win-fr',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                    <label class="window-cleaning__ordinary-windows__amount" for="">
+                        Количество витражных окон
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-stn-win',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input
+                                type="number"
+                                id="amount-stn-win"
+                                min="0"
+                                max="50"
+                                step="1"
+                                value="1"
+                                name="{{ windows_form.fields.num_stained_windows.label }}"
+                                readonly
+                        />
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-stn-win',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+
+                </div>
+                <div class="window-cleaning__showcases">
+                    <h2 class="window-cleaning__showcases__title">Витрины (витражи)</h2>
+                    <label class="window-cleaning__showcases__glazing-area" for="">
+                        Площадь остекления м2 (одна сторона)
+                        <input type="number" name="{{ windows_form.fields.square_showcase.label }}">
+                    </label>
+                    <label class="window-cleaning__showcases__glazing-area" for="">
+                        Высота витрин
+                        <input type="number" name="{{ windows_form.fields.height_showcase.label }}">
+                    </label>
+                    <label class="window-cleaning__ordinary-windows__amount" for="">
+                        Количество витрин
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-num-showcase',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input
+                                type="number"
+                                id="amount-num-showcase"
+                                min="0"
+                                max="50"
+                                step="1"
+                                value="1"
+                                name="{{ windows_form.fields.num_showcase.label }}"
+                                readonly
+                        />
+                        <button
+                                class="window-cleaning__ordinary-windows__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-num-showcase',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                </div>
+            </div>
+            <button class="order-button" type="submit">Далее</button>
+        </form>
+    </section>
+
+{% endblock content %}

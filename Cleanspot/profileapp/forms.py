@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from phonenumber_field.formfields import PhoneNumberField
 
 from authapp.models import CleanspotUser, Cities, CleanspotUserType
+from mainapp.models import Premises
 
 
 class CleanspotUserEditForm(UserChangeForm):
@@ -31,37 +32,27 @@ class CleanspotUserPasswordChangeForm(PasswordChangeForm):
 
 
 class AddCleanerForm(forms.ModelForm):
-    password = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={'class': 'form-control mb-3',
-                                                                                'placeholder': 'пароль'}))
-    email = forms.CharField(max_length=128, widget=forms.EmailInput(attrs={'class': 'form-control mb-3',
-                                                                           'type': 'email',
-                                                                           'placeholder': 'email',
-                                                                           'aria-label': 'input email'}))
-    phone_number = PhoneNumberField(widget=forms.TextInput(attrs={'class': 'form-control mb-3',
-                                                                  'type': 'tel', 'placeholder': 'Телефон',
-                                                                  'aria-label': 'input phone'}), required=False)
-    title = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'type': 'text',
-                                                                          'placeholder': 'Наименование',
-                                                                          'aria-label': 'input name'}), required=False)
-    name_display_site = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'form-control mb-3',
-                                                                                      'type': "text",
-                                                                                      'placeholder': 'Имя отображения '
-                                                                                                     'на сайте',
-                                                                                      'aria-label': 'input name on site'
-                                                                                      }), required=False)
-    inn_kpp = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'form-control mb-3',
-                                                                            'type': "text",
-                                                                            'placeholder': 'ИНН/КПП',
-                                                                            'aria-label': 'input inn'
-                                                                            }), required=False)
+    password = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={'class': 'cabinet-form__input',
+                                                                                'placeholder': 'Пароль', 'type': 'password'}))
+    email = forms.CharField(max_length=128, widget=forms.EmailInput(attrs={'class': 'cabinet-form__input', 'type': 'email',
+                                                                          'placeholder': 'E-mail'}))
+    phone_number = PhoneNumberField(widget=forms.TextInput(attrs={'class': 'cabinet-form__input',
+                                                                  'type': 'tel', 'placeholder': 'Телефон'}), required=False)
+    title = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'cabinet-form__input', 'type': 'text',
+                                                                          'placeholder': 'Наименование'}), required=False)
+    name_display_site = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'cabinet-form__input', 'type': 'text',
+                                                                          'placeholder': 'Имя отображения на сайте'}), required=False)
+    inn_kpp = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'cabinet-form__input', 'type': 'text',
+                                                                          'placeholder': 'ИНН/КПП'}), required=False)
     city = forms.ModelChoiceField(queryset=Cities.objects.all(),
-                                  widget=forms.Select(attrs={'class': 'form-control mb-3',
+                                  widget=forms.Select(attrs={'class': 'cabinet-form__input',
                                                              'placeholder': 'Город'}),
                                   empty_label='Выберите город', required=False)
 
     class Meta:
         model = CleanspotUser
         fields = ('user_type', 'title', 'name_display_site', 'phone_number', 'email', 'inn_kpp', 'city', 'password')
+        widgets = {'user_type': forms.HiddenInput}
 
     def clean_name(self):
         data = self.cleaned_data['title']
@@ -84,12 +75,22 @@ class AddCleanerForm(forms.ModelForm):
 
 
 class EditCleanerForm(AddCleanerForm):
-    password = ReadOnlyPasswordHashField(widget=forms.PasswordInput(attrs={'class': 'form-control mb-3',
+    password = ReadOnlyPasswordHashField(widget=forms.PasswordInput(attrs={'class': 'cabinet-form__input',
                                                                            'placeholder': 'пароль'}))
 
 
 class EditUsersForm(EditCleanerForm):
     user_type = forms.ModelChoiceField(queryset=CleanspotUserType.objects.all().exclude(name='Moderator').
                                        exclude(name='Cleaner'), widget=forms.Select(attrs={
-                                        'class': 'form-control mb-3'}),
+                                        'class': 'cabinet-form__input'}),
                                        empty_label='Выберите тип пользователя')
+
+
+class CleanspotUserAddOrEditPremise(forms.ModelForm):
+
+
+    class Meta:
+        model = Premises
+        fields = ('premises_owner', 'premises_type', 'premises_city', 'premises_street', 'premises_house_num',
+                  'premises_apartment', 'premises_intercom', 'premises_entrance', 'premises_floor')
+        widgets = {'premises_owner': forms.HiddenInput}

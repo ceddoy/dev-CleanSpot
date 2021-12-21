@@ -1,36 +1,46 @@
 {% extends 'profileapp/base.html' %}
+{% load static %}
 
 {% block content %}
-    <table class="table mt-5">
-        <thead>
-        <tr>
-            <th scope="col">Наименование</th>
-            <th scope="col">Телефон</th>
-            <th scope="col">Имя отображения на сайте</th>
-            <th scope="col">email</th>
-            <th scope="col">ИНН/КПП</th>
-            <th scope="col">Город</th>
-            <th scope="col">Пароль</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for cleaner in cleaners %}
-            <tr>
-                <td>{{ cleaner.title }}</td>
-                <td>{{ cleaner.phone_number }}</td>
-                <td>{{ cleaner.name_display_site }}</td>
-                <td>{{ cleaner.email }}</td>
-                <td>{{ cleaner.inn_kpp }}</td>
-                <td>{{ cleaner.city }}</td>
-                <td>*****</td>
-                <td>Block</td>
-                <td><a href="{% url 'edit:lk_admin_del' user.email cleaner.pk %}">Del</a></td>
-                <td><a href="{% url 'edit:lk_admin_cleaner_edit' user.email cleaner.pk %}">Edit</a>></td>
-            </tr>
+    <section class="cabinet-main">
+        <h2>Личный кабинет администратора</h2>
+
+        {% include 'profileapp/include/inc_lk_admin_menu.html' %}
+
+        <div class="cabinet-edit-partners">
+            {% for cleaner in page_obj.object_list %}
+                <div class="cabinet__edit-partners__item">
+                    <div><input type="text" class="" placeholder="Наименование" value="{{ cleaner.title }}"></div>
+                    <div><input type="text" class="" placeholder="Телефон" value="{{ cleaner.phone_number }}"></div>
+                    <div><input type="text" class="" placeholder="E-mail" value="{{ cleaner.email }}"></div>
+                    <div><input type="text" class="" placeholder="ИНН/КПП" value="{{ cleaner.inn_kpp }}"></div>
+                    <div><input type="text" class="" placeholder="Город" value="{{ cleaner.city }}"></div>
+                    <div><input type="password" class="" placeholder="Пароль" value="{{ cleaner.password }}"></div>
+                    <div><input type="text" class="" placeholder="Имя отображения на сайте"
+                                value="{{ cleaner.name_display_site }}"></div>
+                    <button onclick="window.location.href='{% url 'edit:lk_admin_cleaner_edit' user.email cleaner.pk %}'">
+                        <i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
+                    <button onclick="window.location.href='#'"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                    <button onclick="window.location.href='{% url 'edit:lk_admin_del' user.email cleaner.pk %}'"><i
+                            class="fas fa-trash-alt" aria-hidden="true"></i></button>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <ul class="pagination">
+        <button type="button" class="pagination__btn"
+                {% if page_obj.has_previous %}onclick="window.location.href='?page={{ page_obj.previous_page_number }}'"{% endif %}>
+            &lt
+        </button>
+        {% for num in page_obj.paginator.page_range %}
+            <button type="button" class="pagination__numbers {% if page_obj.number == num %}active{% endif %}"
+                    {% if page_obj.number != num %}
+                        onclick="window.location.href='?page={{ num }}'"
+                    {% endif %}>{{ num }}</button>
         {% endfor %}
-        </tbody>
-    </table>
+        <button type="button" class="pagination__btn"
+                {% if page_obj.has_next %}onclick="window.location.href='?page={{ page_obj.next_page_number }}'"{% endif %}>
+            &gt
+        </button>
+    </ul>
 {% endblock content %}

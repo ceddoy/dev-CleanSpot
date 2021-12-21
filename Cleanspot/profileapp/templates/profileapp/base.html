@@ -1,44 +1,29 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Administrator lk</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
 </head>
+
 <body>
-
 <div class="container">
-
-    <ul class="nav nav-pills nav-fill mt-3">
-        {% for key, value in lk_admin_menu.items %}
-            <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == key %}active
-                                   {% elif request.resolver_match.url_name == 'lk_admin_cleaner_edit' and key == 'lk_admin_cleaner_list' %}active
-                                   {% elif request.resolver_match.url_name == 'lk_admin_users_edit' and key == 'lk_admin_users_list' %}active
-                                   {% endif %}"
-                   aria-current="page"
-                   href="{% url value.1 user.email %}">{{ value.0 }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% include 'profileapp/include/inc_lk_admin_main_menu.html' %}
 
     {% block content %}
-    {% endblock %}
-    <button class="btn btn-link form-control">
-        <a href="{% url 'edit:edit' user.email %}">
-            вернуться в личный кабинет
-        </a>
-    </button>
-</div>
+    {% endblock content %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+
+</div>
 </body>
+
 </html>

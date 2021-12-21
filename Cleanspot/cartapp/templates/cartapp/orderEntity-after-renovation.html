@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+    <link rel="stylesheet" href="orderEntity-after-renovation.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
+    <script>
+      function change(objName, min, max, step) {
+        let obj = document.getElementById(objName)
+        let tmp = +obj.value + step
+        if (tmp < min) tmp = min
+        if (tmp > max) tmp = max
+        obj.value = tmp
+      }
+    </script>
+  </head>
+  <body>
+    <!-- хедер -->
+    <table class="ordering-entity__header container">
+      <tr>
+        <td class="table-cell"><img src="img/logo.png" alt="logo" /></td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-type">Ежедневная по&nbsp;графику</p>
+          <p class="table-text">Тип уборки</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__days-week">Пн Ср Пт</p>
+          <p class="table-text">Дни недели</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__cleaning-time">15.00 - 19.00</p>
+          <p class="table-text">Время уборки</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__number-staff">3</p>
+          <p class="table-text">Кол-во персонала</p>
+        </td>
+        <td class="table-cell">
+          <p class="table-cell__price">от 5000 руб</p>
+          <p class="table-text">СТОИМОСТЬ</p>
+        </td>
+      </tr>
+    </table>
+    <!-- юридическое лицо \ частное лицо -->
+    <div class="order-type">
+      <div class="order-type__individual">Частное лицо</div>
+      <div class="order-type__entity">Юридическое лицо</div>
+    </div>
+    <!-- типы уборки -->
+    <div class="cleaning-type">
+      <div class="cleaning-type__daily-schedule">Ежедневная по графику</div>
+      <div class="cleaning-type__general">Генеральная</div>
+      <div class="cleaning-type__after-renovation">После ремонта</div>
+      <div class="cleaning-type__window-cleaning">Мойка окон</div>
+    </div>
+
+    <!-- секция юридическое лицо после ремонта -->
+    <section class="after-renovation__section container">
+      <h2 class="after-renovation__title">После ремонта</h2>
+      <div class="after-renovation__list">
+        <div class="after-renovation__checkbox">
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Мойка пола
+          </label>
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Обеспыливание стен
+          </label>
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Мойка санузла
+          </label>
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Очистка мебели (указать кол-во элементов)
+          </label>
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Очистка деталей интерьера и прочее ( двери, электрощитки, розетки и
+            т.д.)
+          </label>
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Дополнительные пожелания
+          </label>
+        </div>
+        <div class="after-renovation__window-cleaning">
+          <label for="" class="after-renovation__checkbox-item">
+            <input type="checkbox" name="" id="" />
+            Мойка окон
+          </label>
+          <label class="after-renovation__window-cleaning__amount" for="">
+            Количество окон
+            <button
+              class="number-minus"
+              type="button"
+              onClick="change('amount',0,50,-1);"
+            >
+              -
+            </button>
+            <input type="number" value="1" id="amount" />
+            <button
+              class="number-plus"
+              type="button"
+              onClick="change('amount',0,50,1);"
+            >
+              +
+            </button>
+          </label>
+          <label class="after-renovation__window-cleaning__amount" for="">
+            Количество створок окон
+            <button
+              class="number-minus"
+              type="button"
+              onClick="change('amount1',0,50,-1);"
+            >
+              -
+            </button>
+            <input type="number" value="1" id="amount1" />
+            <button
+              class="number-plus"
+              type="button"
+              onClick="change('amount1',0,50,1);"
+            >
+              +
+            </button>
+          </label>
+          <label class="after-renovation__window-cleaning__amount" for="">
+            Количество витражных окон
+            <button
+              class="number-minus"
+              type="button"
+              onClick="change('amount2',0,50,-1);"
+            >
+              -
+            </button>
+            <input type="number" value="1" id="amount2" />
+            <button
+              class="number-plus"
+              type="button"
+              onClick="change('amount2',0,50,1);"
+            >
+              +
+            </button>
+          </label>
+          <label class="after-renovation__window-cleaning__amount" for="">
+            Количество створок витражных окон
+            <button
+              class="number-minus"
+              type="button"
+              onClick="change('amount3',0,50,-1);"
+            >
+              -
+            </button>
+            <input type="number" value="1" id="amount3" />
+            <button
+              class="number-plus"
+              type="button"
+              onClick="change('amount3',0,50,1);"
+            >
+              +
+            </button>
+          </label>
+        </div>
+      </div>
+      <button class="order-button" type="submit">Далее</button>
+    </section>
+  </body>
+</html>

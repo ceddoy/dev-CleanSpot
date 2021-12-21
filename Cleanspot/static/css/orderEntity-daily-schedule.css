@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+
+  font-family: Montserrat;
+}
+/* секция юридическое лицо ежедневная по графику */
+.ordering-entity__header {
+  width: 100%;
+  height: 143px;
+  border-collapse: collapse;
+}
+.table-cell {
+  background: #f3f3f3;
+  border: 1px solid #8c8c8c;
+  box-sizing: border-box;
+  text-align: center;
+  max-width: 290px;
+  padding: 30px;
+}
+
+.table-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+
+  letter-spacing: -0.015em;
+  color: #8c8c8c;
+}
+
+.table-cell__cleaning-type,
+.table-cell__days-week,
+.table-cell__cleaning-time,
+.table-cell__number-staff,
+.table-cell__price {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+/* секция типа уборки ежедневная по графику */
+.order {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 38px;
+}
+.order-type__individual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 328px;
+  height: 60px;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  border-radius: 6px 0px 0px 6px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+  text-align: center;
+}
+.order-type__entity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 328px;
+  height: 60px;
+  background: #3d77ea;
+  border: 1px solid #d4d4d4;
+  box-sizing: border-box;
+  border-radius: 0px 6px 6px 0px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+.cleaning-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 35px;
+}
+.cleaning-type__daily-schedule,
+.cleaning-type__general,
+.cleaning-type__after-renovation,
+.cleaning-type__window-cleaning {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #201d47;
+  box-sizing: border-box;
+
+  width: 357px;
+  height: 79px;
+  border: 1px solid #e4e4e4;
+}
+.cleaning-type__daily-schedule {
+  background: #3d77ea;
+  color: #ffffff;
+  border-radius: 6px 0px 0px 6px;
+}
+.cleaning-type__window-cleaning {
+  background: #ffffff;
+  border-radius: 0px 6px 6px 0px;
+}
+/* меню выбора ежедневной уборки и доп опции */
+.daily-schedule__menu-title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: -0.015em;
+  color: #000000;
+  text-align: center;
+}
+.daily-schedule__menu-item {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 74px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+}
+.daily-schedule__menu-item a {
+  text-decoration: none;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 74px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+}
+.lable-checkbox {
+  display: inline-block;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 74px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.lable-checkbox + .lable-checkbox {
+  margin-left: 50px;
+}
+.lable-checkbox__input {
+  height: 20px;
+  width: 20px;
+}
+
+.daily-schedule__menu-item__number {
+  display: flex;
+}
+.daily-schedule__menu-item__number input[type='number'] {
+  display: block;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+
+  padding: 0;
+  margin: 0;
+  width: 70px;
+  box-sizing: border-box;
+  text-align: center;
+  border: none;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+.daily-schedule__menu-item__number
+  input[type='number']::-webkit-outer-spin-button,
+.daily-schedule__menu-item__number
+  input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+.number-minus,
+.number-plus {
+  width: 45px;
+  height: 45px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 45px;
+  line-height: 24px;
+  color: #000000;
+  border: 1px solid #a0a0a0;
+}
+
+.daily-schedule__menu-item input[type='text'] {
+  line-height: 2rem;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+}
+.order-button {
+  width: 250px;
+  height: 70px;
+  background: #57c9b5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}

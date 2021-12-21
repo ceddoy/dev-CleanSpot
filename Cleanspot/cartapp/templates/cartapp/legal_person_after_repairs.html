@@ -1,0 +1,110 @@
+{% extends 'cartapp/base.html' %}
+
+{% block content %}
+
+    <section class="after-renovation__section container">
+        <form action="" method="post" style="display: flex; flex-direction: column; align-items: center;">
+            {% csrf_token %}
+            {{ form.non_fields_errors }}
+            <h2 class="after-renovation__title">После ремонта</h2>
+            <div class="after-renovation__list">
+                <div class="after-renovation__checkbox">
+                    {% for service in form.services %}
+                        <label for="" class="after-renovation__checkbox-item">
+                            {{ service }}
+                        </label>
+                    {% endfor %}
+                    <label for="additional" class="after-renovation__checkbox-item">
+                        <div>
+                            <input class="custom__checkbox-cart" type="checkbox" id="checkbox5">
+                            <label for="checkbox5">Дополнительные пожелания</label>
+                            <label for="{{ form.comment.id_for_label }}"></label>
+                            <textarea class="optional__text-cart" id="{{ form.comment.id_for_label }}"
+                                      name="{{ form.comment.label|lower }}" rows="5" cols="50"></textarea>
+                        </div>
+                    </label>
+                </div>
+                <div class="after-renovation__window-cleaning">
+                    <label for="" class="after-renovation__checkbox-item">
+                        {{ form.is_windows }}
+                        Мойка окон
+                    </label>
+                    <label class="after-renovation__window-cleaning__amount" for="">
+                        Количество окон
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-num-win',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input id="amount-num-win" type="number" min="0" max="50" step="1" value="1" name="{{ windows_form.fields.num_windows.label }}" readonly>
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-num-win',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                    <label class="after-renovation__window-cleaning__amount" for="">
+                        Количество створок окон
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-win-fr',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input id="amount-win-fr" type="number" min="0" max="50" step="1" value="1" name="{{ windows_form.fields.num_window_frame.label }}" readonly/>
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-win-fr',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                    <label class="after-renovation__window-cleaning__amount" for="">
+                        Количество витражных окон
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-stn-win',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input id="amount-stn-win" type="number" min="0" max="50" step="1" value="1" name="{{ windows_form.fields.num_stained_windows.label }}" readonly/>
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-stn-win',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                    <label class="after-renovation__window-cleaning__amount" for="">
+                        Количество створок витражных окон
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-minus"
+                                type="button"
+                                onclick="change('amount-stn-fr',0,50,-1);"
+                        >
+                            -
+                        </button>
+                        <input id="amount-stn-fr" type="number" min="0" max="50" step="1" value="1" name="{{ windows_form.fields.num_stained_window_frame.label }}" readonly/>
+                        <button
+                                class="after-renovation__window-cleaning__amount__number-plus"
+                                type="button"
+                                onclick="change('amount-stn-fr',0,50,1);"
+                        >
+                            +
+                        </button>
+                    </label>
+                </div>
+            </div>
+            <button class="order-button" type="submit">Далее</button>
+        </form>
+    </section>
+
+{% endblock content %}

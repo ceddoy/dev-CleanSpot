@@ -1,0 +1,44 @@
+{% extends 'cartapp/base.html' %}
+
+{% block content %}
+    <section class="spring-cleaning__section container">
+        <form action="" method="post" style="display: flex; flex-direction: column; align-items: center;">
+            {% csrf_token %}
+            {{ form.non_fields_errors }}
+            <div class="wraper">
+                <div class="spring-cleaning">
+                    <h2 class="spring-cleaning__title">Генеральная уборка</h2>
+                    <div class="spring-cleaning__checkbox">
+                        {% for service in form.services %}
+                            {% if service.data.value.instance.basic_service %}
+                                {{ service }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="additional-options">
+                    <h2 class="additional-options__title">Дополнительные опции</h2>
+                    <div class="additional-options__checkbox">
+                        {% for service in form.services %}
+                            {% if not service.data.value.instance.basic_service %}
+                                {{ service }}
+                            {% endif %}
+                        {% endfor %}
+                        <label for="additional">
+                            <div>
+                                <input class="custom__checkbox-cart" type="checkbox" id="checkbox5">
+                                <label for="checkbox5">Дополнительные пожелания</label>
+                                <label for="{{ form.comment.id_for_label }}"></label>
+                                <textarea class="optional__text-cart" id="{{ form.comment.id_for_label }}"
+                                          name="{{ form.comment.label|lower }}" rows="5" cols="50"></textarea>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="order-button" type="submit">Далее</button>
+        </form>
+    </section>
+
+
+{% endblock content %}

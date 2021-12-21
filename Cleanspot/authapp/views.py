@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -48,7 +48,10 @@ def login(request):
         user = auth.authenticate(email=email, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('main:main'))
+            if 'next' in request.POST:
+                return redirect(request.POST['next'])
+            else:
+                return HttpResponseRedirect(reverse('main:main'))
     else:
         login_form = CleanspotUserLoginForm()
     content = {

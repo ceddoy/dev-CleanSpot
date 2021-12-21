@@ -20,6 +20,9 @@
                 {{ login_form.password.label }}</label>
             </div>
             <div class="login_form__element">{{ login_form.password }}</div>
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
             <button type="submit" class="button button_darkgreen__filled login_form__button">Вход</button>
         </form>
         <div class="restore">

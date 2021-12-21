@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/a78b596222.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <section class="nav">
+            <a href="#"><img src={% static "img/logo.png" %} alt="logo" title="Домой"></a>
+            <ul class="nav__ul">
+                <li class="nav__ul__item f-16">
+                    <a href="#">Как это работает</a>
+                </li>
+                <li class="nav__ul__item f-16">
+                    <a href="#">О сервисе</a>
+                </li>
+                <li class="nav__ul__item f-16">
+                    <a href="#">FAQ</a>
+                </li>
+                <li class="nav__ul__item f-16">
+                    <a href="#">Контакты</a>
+                </li>
+                <li class="nav__ul__item f-16">
+                    <a href="#">Поддержка</a>
+                </li>
+                <li class="nav__ul__item f-16">
+                    <a href="#">Для Партнеров</a>
+                </li>
+            </ul>
+            <button class="button button_darkgreen__filled" title="Профиль">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </button>
+        </section>
+        <section class="cabinet-main">
+            <h2>Личный кабинет администратора</h2>
+            <ul class="cabinet__options">
+                <li class="cabinet__options__item"><p>Добавление
+                    партнера</p></li>
+                <li class="cabinet__options__item">Редактировать
+                    партнера</li>
+                <li class="cabinet__options__item">История всех
+                    заказов</li>
+                <li class="cabinet__options__item active">Пользователи</li>
+                <li class="cabinet__options__item">Прайс -лист</li>
+            </ul>
+            <div class="cabinet-edit-partners">
+                <div class="cabinet__edit-partners__item">
+                    <div><input type="text" class="" placeholder="Наименование"></div>
+                    <div><input type="text" class="" placeholder="Телефон"></div>
+                    <div><input type="text" class="" placeholder="E-mail"></div>
+                    <div><input type="text" class="" placeholder="ИНН/КПП"></div>
+                    <div><input type="text" class="" placeholder="Город"></div>
+                    <div><input type="password" class="" placeholder="Пароль"></div>
+                    <div><input type="text" class="" placeholder="Имя отображения на сайте"></div>
+                    <button class=""><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button><i class="fa fa-ban" aria-hidden="true"></i></button>
+                    <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="cabinet__edit-partners__item">
+                    <div><input type="text" class="" placeholder="Наименование"></div>
+                    <div><input type="text" class="" placeholder="Телефон"></div>
+                    <div><input type="text" class="" placeholder="E-mail"></div>
+                    <div><input type="text" class="" placeholder="ИНН/КПП"></div>
+                    <div><input type="text" class="" placeholder="Город"></div>
+                    <div><input type="password" class="" placeholder="Пароль"></div>
+                    <div><input type="text" class="" placeholder="Имя отображения на сайте"></div>
+                    <button><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button><i class="fa fa-ban" aria-hidden="true"></i></button>
+                    <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="cabinet__edit-partners__item">
+                    <div><input type="text" class="" placeholder="Наименование"></div>
+                    <div><input type="text" class="" placeholder="Телефон"></div>
+                    <div><input type="text" class="" placeholder="E-mail"></div>
+                    <div><input type="text" class="" placeholder="ИНН/КПП"></div>
+                    <div><input type="text" class="" placeholder="Город"></div>
+                    <div><input type="password" class="" placeholder="Пароль"></div>
+                    <div><input type="text" class="" placeholder="Имя отображения на сайте"></div>
+                    <button><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button><i class="fa fa-ban" aria-hidden="true"></i></button>
+                    <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
+                <ul class="pagination">
+                    <li class="pagination__btn">&lt</li>
+                    <li class="pagination__numbers"> 1</li>
+                    <li class="pagination__numbers active">2</li>
+                    <li class="pagination__numbers">3</li>
+                    <li class="pagination__numbers">4</li>
+                    <li class="pagination__numbers">5</li>
+                    <li class="pagination__numbers">6</li>
+                    <li class="pagination__dots">...</li>
+                    <li class="pagination__numbers"> 10</li>
+                    <li class="pagination__btn">&gt</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+        
+    </div>
+</body>
+
+</html>

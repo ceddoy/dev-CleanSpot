@@ -1,16 +1,9 @@
 from django.contrib import admin
-from orderapp.models import Service, ServiceType, Order, OrderItem
+from orderapp.models import Order
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'client')
-
-
-class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'service_type')
+    list_display = ('__str__', 'client', 'session_key')
 
 
 admin.site.register(Order, OrderAdmin)
-admin.site.register(Service, ServiceAdmin)
-admin.site.register(ServiceType)
-admin.site.register(OrderItem)

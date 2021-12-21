@@ -1,0 +1,378 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+
+  font-family: Montserrat;
+}
+/* юридическое лицо */
+.ordering-entity__header {
+  width: 100%;
+  height: 143px;
+  border-collapse: collapse;
+}
+.table-cell {
+  background: #f3f3f3;
+  border: 1px solid #8c8c8c;
+  box-sizing: border-box;
+  text-align: center;
+  max-width: 290px;
+  padding: 30px;
+}
+
+.table-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+
+  letter-spacing: -0.015em;
+  color: #8c8c8c;
+}
+
+.table-cell__cleaning-type,
+.table-cell__days-week,
+.table-cell__cleaning-time,
+.table-cell__number-staff,
+.table-cell__price {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+/* тип уборки */
+.order {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 38px;
+}
+.order-type__individual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 328px;
+  height: 60px;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  border-radius: 6px 0px 0px 6px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+  text-align: center;
+}
+.order-type__entity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 328px;
+  height: 60px;
+  background: #3d77ea;
+  border: 1px solid #d4d4d4;
+  box-sizing: border-box;
+  border-radius: 0px 6px 6px 0px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+.cleaning-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 35px;
+}
+.cleaning-type__daily-schedule,
+.cleaning-type__general,
+.cleaning-type__after-renovation,
+.cleaning-type__window-cleaning {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #201d47;
+  box-sizing: border-box;
+
+  width: 357px;
+  height: 79px;
+  border: 1px solid #e4e4e4;
+}
+.cleaning-type__daily-schedule {
+  border-radius: 6px 0px 0px 6px;
+}
+.cleaning-type__window-cleaning {
+  background: #ffffff;
+  background: #3d77ea;
+  color: #ffffff;
+  border-radius: 0px 6px 6px 0px;
+}
+.order-button {
+  width: 250px;
+  height: 70px;
+  background: #57c9b5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+/* секция юридическое лицо генеральная уборка */
+
+.spring-cleaning__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+.wraper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.spring-cleaning {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 50%;
+  padding: 50px;
+}
+.spring-cleaning__title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.spring-cleaning__text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+}
+
+.additional-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 50%;
+  padding: 50px;
+}
+.additional-options__title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: -0.015em;
+  color: #e47607;
+}
+.additional-options__checkbox {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #2594ad;
+}
+.additional-options__checkbox + .additional-options__checkbox {
+  margin-top: 23px;
+}
+.additional-options__checkbox input {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+/* секция юридическое лицо мойка окон */
+.window-cleaning__section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.window-cleaning__title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+
+.window-cleaning__ordinary-windows__title,
+.window-cleaning__showcases__title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.window-cleaning__types {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.window-cleaning__ordinary-windows,
+.window-cleaning__showcases {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 53px;
+}
+.window-cleaning__ordinary-windows__amount {
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #000000;
+
+  margin-top: 25px;
+  display: flex;
+}
+.window-cleaning__ordinary-windows__glazing-area,
+.window-cleaning__ordinary-windows__text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.window-cleaning__ordinary-windows__amount input[type='number'] {
+  display: block;
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #000000;
+
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  border: none;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+.window-cleaning__ordinary-windows__amount
+  input[type='number']::-webkit-outer-spin-button,
+.window-cleaning__ordinary-windows__amount
+  input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+.number-minus,
+.number-plus {
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #000000;
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+.number-minus {
+  margin-left: 20px;
+}
+.window-cleaning__showcases__glazing-area {
+  margin-top: 25px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.window-cleaning__ordinary-windows__glazing-area input {
+  width: 70px;
+
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.window-cleaning__showcases__glazing-area input {
+  width: 70px;
+
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #000000;
+}

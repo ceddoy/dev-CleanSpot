@@ -1,70 +1,11 @@
 from django.db import models
 from authapp.models import CleanspotUser
-
-
-# Класс описывающий типы улуг
-class ServiceType(models.Model):
-    name = models.CharField(
-        max_length=128,
-        null=False,
-        blank=False,
-        verbose_name='Название типа услуг',
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата и время создания',
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Дата и время изменения',
-    )
-
-    class Meta:
-        verbose_name = 'Тип услуг'
-        verbose_name_plural = 'Типы услуг'
-
-    def __str__(self):
-        return self.name
-
-
-# Класс описывающий услуги
-class Service(models.Model):
-    service_type = models.ForeignKey(
-        ServiceType,
-        on_delete=models.CASCADE,
-        null=False,
-        blank=False,
-        verbose_name='Тип услуги',
-    )
-
-    name = models.CharField(
-        max_length=256,
-        null=False,
-        blank=False,
-        verbose_name='Название услуги',
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата и время создания',
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Дата и время изменения',
-    )
-
-    class Meta:
-        verbose_name = 'Услуга'
-        verbose_name_plural = 'Услуги'
-
-    def __str__(self):
-        return self.name
+from cartapp.models import Service, Cart
+from mainapp.models import Premises
 
 
 class Order(models.Model):
+    """Заказ"""
     SEARCH_CLEANER = 'SC'
     CLEANER_IS_FOUND = 'CIF'
     PROCEEDED = 'PD'
@@ -84,6 +25,14 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         related_name='client',
         verbose_name='Заказчик',
+        null=True,
+        blank=True
+    )
+    session_key = models.CharField(
+        max_length=1024,
+        verbose_name='Ключ сессии',
+        null=True,
+        blank=True
     )
 
     cleaner = models.ForeignKey(
@@ -91,6 +40,16 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         related_name='cleaner',
         verbose_name='Клинер',
+        null=True,
+        blank=True,
+    )
+
+    cart = models.ForeignKey(
+        Cart,
+        verbose_name='Корзина',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
     )
 
     status = models.CharField(
@@ -98,6 +57,20 @@ class Order(models.Model):
         max_length=3,
         choices=ORDERS_STATUS_CHOICES,
         default=SEARCH_CLEANER,
+    )
+
+    premise = models.ForeignKey(
+        Premises,
+        on_delete=models.CASCADE,
+        verbose_name='Помещение',
+        null=True,
+        blank=True
+    )
+
+    comment = models.TextField(
+        verbose_name='Комментарий к заказу',
+        null=True,
+        blank=True
     )
 
     created_at = models.DateTimeField(
@@ -117,33 +90,45 @@ class Order(models.Model):
     def __str__(self):
         return f'Заказ №{self.id}'
 
+    # def get_total_cost(self):
+    #     items = self.orderitems.select_related()
+    #     return sum(list(map(lambda x: x.get_service_cost, items)))
 
-class OrderItem(models.Model):
-    order = models.ForeignKey(
-        Order,
-        on_delete=models.CASCADE,
-        verbose_name='Заказ',
-    )
 
-    service = models.ForeignKey(
-        Service,
-        on_delete=models.CASCADE,
-        verbose_name='Услуга',
-    )
+# class OrderItem(models.Model):
+#     """Услуга корзины"""
+#     order = models.ForeignKey(
+#         Order,
+#         on_delete=models.CASCADE,
+#         verbose_name='Заказ',
+#         related_name='orderitems'
+#     )
+#
+#     service = models.ForeignKey(
+#         Service,
+#         on_delete=models.CASCADE,
+#         verbose_name='Услуга',
+#     )
+#
+#     quantity = models.PositiveIntegerField(
+#         verbose_name='Количество услуг',
+#         default=1
+#     )
+#
+#     created_at = models.DateTimeField(
+#         auto_now_add=True,
+#         verbose_name='Дата и время создания',
+#     )
+#
+#     updated_at = models.DateTimeField(
+#         auto_now=True,
+#         verbose_name='Дата и время изменения',
+#     )
+#
+#     class Meta:
+#         verbose_name = 'Услуга заказа'
+#         verbose_name_plural = 'Услуги заказа'
+#
+#     def __str__(self):
+#         return f'{self.order}, услуга - {self.service}'
 
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата и время создания',
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Дата и время изменения',
-    )
-
-    class Meta:
-        verbose_name = 'Услуга заказа'
-        verbose_name_plural = 'Услуги заказа'
-
-    def __str__(self):
-        return f'{self.order}, услуга - {self.service}'

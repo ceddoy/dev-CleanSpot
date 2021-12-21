@@ -1,0 +1,9 @@
+{% load static %}
+        <form action="" method="post" style="display: flex; flex-direction: column; align-items: center;">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.date_order.errors }}
+            {{ form.date_order }}
+            <b>Готов рассмотреть другие даты уборки</b> {{ form.is_other_date }}
+            <button type="submit">Далее</button>
+        </form>

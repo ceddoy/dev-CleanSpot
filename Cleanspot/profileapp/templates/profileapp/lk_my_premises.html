@@ -1,0 +1,27 @@
+{% extends 'profileapp/base_lk_user_menu.html' %}
+
+{% block content %}
+    <details>
+        <summary>Добавить новый адрес</summary>
+        <form id="add_premise" class="form-horizontal" action="{% url 'edit:lk_my_premises' user %}"
+              method="POST">
+            {% csrf_token %}
+            {{ add_form_premise.as_p }}
+            <input class="form-control" name="add_premise" type="submit" value="сохранить">
+        </form>
+    </details>
+
+    {% for edit_form in edit_form_list %}
+        <details>
+            <summary><b>{{ edit_form.instance.premises_type }}</b> - {{ edit_form.instance }}</summary>
+            <form id="edit_premise" class="form-horizontal" action="{% url 'edit:lk_my_premises' user %}"
+                  method="POST">
+                {% csrf_token %}
+                {{ edit_form.as_p }}
+                <input type="hidden" name="pk" value="{{ edit_form.instance.pk }}">
+                <input class="form-control" name="edit_premise" type="submit" value="сохранить">
+                <button class="form-control mt-2" type="button" onclick="window.location.href='{% url 'edit:lk_my_premises_delete' user edit_form.instance.pk %}'">удалить</button>
+            </form>
+        </details>
+    {% endfor %}
+{% endblock %}
