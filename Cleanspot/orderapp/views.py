@@ -1,10 +1,10 @@
 from django.views.generic import FormView
 
-from profileapp.forms import CleanspotUserAddOrEditPremise
+from orderapp.forms import AddPremiseToOrderForm
 
 
 class AddPremiseToOrderView(FormView):
-    form_class = CleanspotUserAddOrEditPremise
+    form_class = AddPremiseToOrderForm
     success_url = '/'
     template_name = 'orderapp/orderEntity-rooms.html'
 
