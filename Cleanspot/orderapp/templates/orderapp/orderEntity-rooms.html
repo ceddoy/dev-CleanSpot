@@ -49,10 +49,13 @@
 </table>
 <div class="rooms">
     <h2 class="rooms-title">Введите адрес помещения</h2>
+    {% for premise in all_list_permises %}
+        {{ premise }}<br/>
+    {% endfor %}
     <form class="rooms__form" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
-
+{#        <input type="hidden" name="{{ form.instance.premises_owner }}" value="{{ form.premises_owner.id }}">#}
         <label class="rooms__form-type-of-housing" for="{{ form.premises_type.id_for_label }}">
             Тип жилья
             <br/>
@@ -63,11 +66,11 @@
             </select>
         </label>
 
-        <label class="rooms__form-square" for="square">
-            Площадь объекта м2
-            <br/>
-            <input type="number" id="square" min="1" name="square"/>
-        </label>
+{#        <label class="rooms__form-square" for="square">#}
+{#            Площадь объекта м2#}
+{#            <br/>#}
+{#            <input type="number" id="square" min="1" name="square"/>#}
+{#        </label>#}
 
         <label class="rooms__form-city" for="{{ form.premises_city.id_for_label }}">
             Город

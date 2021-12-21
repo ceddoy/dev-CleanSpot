@@ -32,8 +32,8 @@ class Premises(models.Model):
     premises_owner = models.ForeignKey(
         CleanspotUser,
         on_delete=models.CASCADE,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         verbose_name='Владелец помещения',
     )
 
