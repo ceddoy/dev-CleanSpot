@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import FormView
 
 from orderapp.forms import AddPremiseToOrderForm
@@ -9,11 +11,6 @@ class AddPremiseToOrderView(FormView):
     success_url = '/'
     template_name = 'orderapp/orderEntity-rooms.html'
 
-    # def get_success_url(self):
-    #     if self.request.user.is_authenticated:
-    #         return str(self.success_url)
-    #     else:
-
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():
@@ -23,6 +20,13 @@ class AddPremiseToOrderView(FormView):
             else:
                 Order.objects.filter(session_key=Order.objects.get(pk=kwargs['pk']).session_key).update(
                     premise=premise_order)
+                request.session['order_id'] = kwargs['pk']
+                print(request.session.__dict__)
+                request.session.modified = True
+                # тут какое-нибудь сообщение, о том что надо анониму авторизироваться для дальшей работы
+                # и после перенаправляет на авторизацию
+                return HttpResponseRedirect(reverse('auth:login'))
+
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
