@@ -131,5 +131,7 @@ EMAIL_FILE_PATH = 'tmp/email-messages/'
 # EMAIL_PORT = '465'
 # EMAIL_USE_SSL = True
 
+SESSION_ENGINE = 'orderapp.session_backend'
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
