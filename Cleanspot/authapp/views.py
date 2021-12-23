@@ -15,6 +15,7 @@ from django.contrib import auth
 from authapp.models import CleanspotUser, CleanspotUserType
 
 from authapp.services import send_verify_email, is_activation_key_expired
+from orderapp.models import Order
 
 
 class AuthPasswordResetConfirmView(PasswordResetConfirmView):
@@ -51,6 +52,11 @@ def login(request):
             if 'next' in request.POST:
                 return redirect(request.POST['next'])
             else:
+                """Делает проверку на наличие order_id, если есть, то к зашедшему
+                передаются данные из session (надо будет обернуть функцией)"""
+                order_id = request.session.get('order_id')
+                if order_id:
+                    Order.objects.filter(pk=order_id).update(client=request.user)
                 return HttpResponseRedirect(reverse('main:main'))
     else:
         login_form = CleanspotUserLoginForm()
