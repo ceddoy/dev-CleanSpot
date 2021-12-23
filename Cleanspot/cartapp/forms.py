@@ -32,9 +32,24 @@ class AddToCartForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         services_d = kwargs.pop('services_dict')
+        self.service_type = kwargs.pop('type_servise')
         super().__init__(*args, **kwargs)
         self.fields['services'].queryset = services_d
+        result_required_for_daily_as_scheduled = True if self.service_type == 'daily_as_scheduled' else False
+        result_required_for_services = True if self.service_type not in ['window_cleaning', 'daily_as_scheduled'] else False
+        self.fields['cleaning_days'].required = result_required_for_daily_as_scheduled
+        self.fields['cleaning_time'].required = result_required_for_daily_as_scheduled
+        self.fields['services'].required = result_required_for_services
 
+
+
+    # def clean_cleaning_days(self):
+    #     if 'daily_as_scheduled' == self.service_type:
+    #         empty_list = True if len(self.cleaned_data['cleaning_days']) == 0 else False
+    #         if empty_list:
+    #             raise forms.ValidationError('Необходимо выбрать по каким дням необходима уборка')
+    #         else:
+    #             return self.cleaned_data['cleaning_days']
 
 class AddToCartWindowsForm(forms.ModelForm):
     class Meta:
@@ -52,5 +67,3 @@ class AddDateToCartForm(forms.Form):
         if date_order < now_date:
             raise forms.ValidationError('Нельзя вводить задним числом дату')
         return date_order
-
-
