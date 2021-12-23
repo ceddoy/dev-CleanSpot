@@ -95,8 +95,10 @@ class ShowListServicesView(FormView):
                 slug=self.kwargs['servisetype_slug'],
                 user_type_for_service_type=user_type
             )
+            kwargs['type_servise'] = self.kwargs['servisetype_slug']
         else:
             type_service = ServiceType.objects.filter(user_type_for_service_type=user_type)[0]
+            kwargs['type_servise'] = type_service
         kwargs['services_dict'] = Service.objects.filter(service_type__pk=type_service.pk).select_related()
         return kwargs
 
