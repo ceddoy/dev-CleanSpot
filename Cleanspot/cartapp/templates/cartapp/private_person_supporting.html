@@ -8,6 +8,7 @@
             <div class="wraper">
                 <div class="spring-cleaning">
                     <h2 class="spring-cleaning__title">Поддерживающая уборка</h2>
+                    {{ form.services.errors }}
                     <div class="spring-cleaning__checkbox">
                         {% for service in form.services %}
                             {% if service.data.value.instance.basic_service %}

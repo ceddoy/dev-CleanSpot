@@ -8,6 +8,7 @@
             <h2 class="after-renovation__title">После ремонта</h2>
             <div class="after-renovation__list">
                 <div class="after-renovation__checkbox">
+                    {{ form.services.errors }}
                     {% for service in form.services %}
                         <label for="" class="after-renovation__checkbox-item">
                             {{ service }}
