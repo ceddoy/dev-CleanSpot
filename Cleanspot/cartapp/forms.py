@@ -9,7 +9,9 @@ class AddToCartForm(forms.Form):
 
     services = forms.ModelMultipleChoiceField(queryset=Service.objects.all(),
                                               widget=forms.CheckboxSelectMultiple,
-                                              required=False)
+                                              required=False,
+                                              error_messages={'required': 'Необходимо выбрать услугу/услуги!'}
+                                              )
 
     comment = forms.CharField(max_length=1024, widget=forms.Textarea, required=False)
 
