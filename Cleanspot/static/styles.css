@@ -1002,6 +1002,14 @@
   justify-content: space-between;
 }
 
+.your_orders {
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
 .orders__item {
   width: 49%;
   max-height: 250px;
@@ -1017,6 +1025,20 @@
 }
 
 .orders__item__buttons {
+  visibility: hidden;
+  width: 0%;
+}
+
+.orders__item__buttons button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.orders__item__buttons .order_button {
+  margin-top: 40px;
+}
+
+.orders__item__content {
   display: flex;
 }
 
@@ -1040,12 +1062,23 @@
   transition-duration: 500ms;
 }
 
-.orders__item__more:checked + .orders__item ~ .orders__item__buttons {
-  display: flex;
+.orders__item__more:checked + .orders__item .orders__item__buttons {
+  visibility: visible;
+  transition-duration: 500ms;
+  width: 30%;
+}
+
+.orders__item__more:checked + .orders__item .orders__item__content_wrp {
+  width: 70%;
 }
 
 .orders__item__more:not(:checked) + .orders__item {
   width: 49%;
+  transition-duration: 500ms;
+}
+
+.orders__item__more:not(:checked) + .order_item_your_order {
+  width: 65%;
   transition-duration: 500ms;
 }
 

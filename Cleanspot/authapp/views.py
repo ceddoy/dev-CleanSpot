@@ -15,6 +15,7 @@ from django.contrib import auth
 from authapp.models import CleanspotUser, CleanspotUserType
 
 from authapp.services import send_verify_email, is_activation_key_expired
+from mainapp.models import Premises
 from orderapp.models import Order
 
 
@@ -56,7 +57,12 @@ def login(request):
                 передаются данные из session (надо будет обернуть функцией)"""
                 order_id = request.session.get('order_id')
                 if order_id:
+
                     Order.objects.filter(pk=order_id).update(client=request.user)
+                    Premises.objects.filter(pk=Order.objects.get(pk=order_id).premise.pk).update(
+                        premises_owner=request.user
+                    )
+                    del request.session['order_id']
                 return HttpResponseRedirect(reverse('main:main'))
     else:
         login_form = CleanspotUserLoginForm()

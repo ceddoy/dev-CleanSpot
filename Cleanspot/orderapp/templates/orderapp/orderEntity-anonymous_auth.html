@@ -1,0 +1,9 @@
+{% extends 'orderapp/orderEntity-base.html' %}
+{% load static %}
+
+{% block content %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 150px;">
+            <h1>Пожалуйста, зарегистрируйтесь либо войдите в систему</h1>
+            <button onclick="window.location.href='{% url 'auth:login' %}'" class="button button_lightgreen__filled" style="margin-top: 100px">Войти</button>
+        </div>
+{% endblock content %}

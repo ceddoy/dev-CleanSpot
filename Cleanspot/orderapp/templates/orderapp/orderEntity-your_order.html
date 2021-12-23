@@ -1,0 +1,28 @@
+{% extends 'orderapp/orderEntity-base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h1 class="table-cell__cleaning-type" style="margin-top: 100px;">Ваш заказ</h1>
+        <div class="your_orders">
+            <input class="orders__item__more" type="checkbox" id="faq-1">
+            <div class="orders__item order_item_your_order">
+                <label for="faq-1"></label>
+                <div class="orders__item__content">
+                    <div class="orders__item__content_wrp">
+                        <h3 class="orders__item__number">№ {{ order.pk }}</h3>
+                        <p class="orders__item__day">{{ order.cart.date_order|date:"d E, l"|lower }}</p>
+                        {% if order.cart.cleaning_time %}
+                        <p class="orders__item__time">{{ order.cart.cleaning_time }}</p>
+                        {% endif %}
+                        <p class="orders__item__adress">{{ order.premise }}</p>
+                    </div>
+                    <div class="orders__item__buttons">
+                        <button class="button button_lightgreen__filled order_button">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="window.location.href='{% url 'order:anonymous_order' %}'" class="button button_lightgreen__filled" style="margin-top: 100px">Найти клинера</button>
+    </div>
+{% endblock content %}
