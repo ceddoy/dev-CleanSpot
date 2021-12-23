@@ -17,12 +17,14 @@ class AddToCartForm(forms.Form):
 
     cleaning_days = forms.ModelMultipleChoiceField(queryset=DaysOfWeek.objects.all(),
                                                    widget=forms.CheckboxSelectMultiple(),
-                                                   required=False
+                                                   required=False,
+                                                   error_messages={'required': 'Необходимо выбрать день/дни недели!'}
                                                    )
 
     cleaning_time = forms.ChoiceField(choices=CLEANING_TIME_CHOICES,
                                       widget=forms.RadioSelect,
-                                      required=False
+                                      required=False,
+                                      error_messages={'required': 'Необходимо выбрать промежуток времени уборки!'}
                                       )
 
     number_stuff = forms.IntegerField(min_value=1,
