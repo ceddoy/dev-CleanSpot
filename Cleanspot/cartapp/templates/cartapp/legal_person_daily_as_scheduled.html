@@ -13,6 +13,7 @@
                     <li class="daily-schedule__menu-item">
                         По каким дням недели уборка
                         <br>
+                        {{ form.cleaning_days.errors }}
                         {% for day in form.cleaning_days %}
                             <label class="lable-checkbox" for="{{ day.id_for_label }}">
                                 <input
@@ -31,6 +32,7 @@
                     <li class="daily-schedule__menu-item">
                         Какое время уборки &nbsp;
                         <br/>
+                        {{ form.cleaning_time.errors }}
                         {% for time in form.cleaning_time %}
                             <label class="label-cleaning-time" for="{{ time.id_for_label }}">
                                 <input

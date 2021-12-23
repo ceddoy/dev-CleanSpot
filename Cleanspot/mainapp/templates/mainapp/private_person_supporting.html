@@ -22,6 +22,7 @@
 
         <div class="order__more__item">
             <h3>Поддерживающая уборка</h3>
+            {{ form.services.errors }}
             {% for service in form.services %}
                 {% if service.data.value.instance.basic_service %}
                     <p>
