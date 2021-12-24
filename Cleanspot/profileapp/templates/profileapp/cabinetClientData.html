@@ -1,0 +1,42 @@
+{% extends 'profileapp/base_lk_user_menu.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="cabinet__data">
+        <form class="cabinet__data__personal" method="post">
+            {% csrf_token %}
+            <h2>Персональный профиль</h2>
+            {% for field in edit_form %}
+                <div class="cabinet__data__personal_form__element">
+                    <label class="cabinet__data__personal_form__input_h" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+                </div>
+                <div class="cabinet__data__personal_form__element">
+                    <input class="cabinet__data__personal_form__input" type="text" id="{{ field.id_for_label }}"
+                           value="{% if field.initial == None %}{% else %}{{ field.initial }}{% endif %}"
+                           name="{{ field.name }}">
+                </div>
+            {% endfor %}
+            <div class="cabinet__data__personal__btns">
+                <button type="submit" class="button button_blue__filled f-18">Сохранить</button>
+                <button type="button" class="button button_blue__unfilled f-18"
+                        onclick="window.location.href='{% url 'auth:logout' %}'">Выйти
+                </button>
+            </div>
+            <button class="btn btn-link form-control">
+                <a href="{% url 'edit:change_password' user.email %}">
+                    сменить пароль
+                </a>
+            </button>
+            {% if is_moder %}
+                <button class="btn btn-link form-control">
+                    <a href="{% url 'edit:lk_admin_cleaner_add' user.email %}">
+                        добавить партнера
+                    </a>
+                </button>
+            {% endif %}
+        </form>
+        <img src="" alt="image" height="405px" width="656px">
+    </div>
+{% endblock %}
