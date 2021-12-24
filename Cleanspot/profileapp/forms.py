@@ -8,16 +8,15 @@ from mainapp.models import Premises
 
 
 class CleanspotUserEditForm(UserChangeForm):
+    password = None
+
     class Meta:
         model = CleanspotUser
-        fields = ('title', 'phone_number', 'email', 'password')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
-            if field_name == 'password':
-                field.widget = forms.HiddenInput()
+        fields = ('title', 'phone_number', 'email')
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['password'].widget = forms.HiddenInput()
 
 
 class CleanspotUserPasswordChangeForm(PasswordChangeForm):
