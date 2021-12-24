@@ -1,11 +1,13 @@
 {% load static %}
 
-<ul class="cabinet__options">
-    {% for key, value in lk_partner_menu.items %}
-        <button class="cabinet__options__item {% if request.resolver_match.url_name == key %}active
-                                   {% elif request.resolver_match.url_name == 'lk_admin_cleaner_edit' and key == 'lk_admin_cleaner_list' %}active
-                                   {% elif request.resolver_match.url_name == 'lk_admin_users_edit' and key == 'lk_admin_users_list' %}active
-                                   {% endif %}" onclick="window.location.href='{% url value.1 user.email %}'">
-            <p>{{ value.0 }}</p></button>
-    {% endfor %}
-</ul>
+<div  class="cabinet__options__wrp">
+    <ul class="cabinet__options">
+        {% for key, value in lk_partner_menu.items %}
+            <button class="cabinet__options__item {% if request.resolver_match.url_name == key %}active
+                                       {% elif request.resolver_match.url_name == 'lk_admin_cleaner_edit' and key == 'lk_admin_cleaner_list' %}active
+                                       {% elif request.resolver_match.url_name == 'lk_admin_users_edit' and key == 'lk_admin_users_list' %}active
+                                       {% endif %}" onclick="window.location.href='{% url value.1 user.email %}'">
+                <p>{{ value.0 }}</p></button>
+        {% endfor %}
+    </ul>
+</div>

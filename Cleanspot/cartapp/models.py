@@ -312,3 +312,9 @@ class Cart(models.Model):
     def get_total_price(self):
         self.total_price = self.cartitems.select_related()
         return sum(list(map(lambda x: x.get_service_cost, self.total_price)))
+
+    def get_cleaning_days(self):
+        result = ''
+        for day in self.cleaning_days.all():
+            result += f'{day.short_title} '
+        return result
