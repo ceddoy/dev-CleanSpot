@@ -14,3 +14,11 @@ LK_ADMIN_MENU = {
     'lk_admin_users_list': ['Пользователи', 'edit:lk_admin_users_list'],
     'lk_admin_price': ['Прайс', 'edit:lk_admin_price'],
 }
+
+lk_user_menu = {
+    'lk_add_order': ['Создать заказ', 'edit:lk_add_order'],
+    'lk_my_premises': ['Мои помещения', 'edit:lk_my_premises'],
+    'lk_current_order': ['Текущий заказ', 'edit:lk_current_order'],
+    'lk_order_history': ['История заказов', 'edit:lk_order_history'],
+    'lk_my_data': ['Мои данные', 'edit:lk_my_data']
+}
