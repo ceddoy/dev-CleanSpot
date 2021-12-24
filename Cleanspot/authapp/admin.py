@@ -14,8 +14,6 @@ class CleanspotUserAdmin(admin.ModelAdmin):
             orig_obj = CleanspotUser.objects.get(pk=obj.pk)
             if obj.password != orig_obj.password:
                 obj.set_password(obj.password)
-            else:
-                obj.set_password(obj.password)
             obj.save()
         else:
             obj.set_password(obj.password)
