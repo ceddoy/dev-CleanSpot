@@ -9,47 +9,39 @@ from django.views.generic import TemplateView
 
 from authapp.models import CleanspotUserType, CleanspotUser
 from authapp.services import send_verify_email
-from common.menu import LK_ADMIN_MAIN_MENU, LK_ADMIN_MENU
+from common.menu import LK_ADMIN_MAIN_MENU, LK_ADMIN_MENU, lk_user_menu
 from mainapp.models import Premises
 from profileapp.forms import CleanspotUserEditForm, CleanspotUserPasswordChangeForm, AddCleanerForm, EditCleanerForm, \
     EditUsersForm, CleanspotUserAddOrEditPremise
 from profileapp.services import get_user
-
-lk_user_menu = {
-    'lk_add_order': ['Создать заказ', 'edit:lk_add_order'],
-    'lk_my_premises': ['Мои помещения', 'edit:lk_my_premises'],
-    'lk_current_order': ['Текущий заказ', 'edit:lk_current_order'],
-    'lk_order_history': ['История заказов', 'edit:lk_order_history'],
-    'lk_my_data': ['Мои данные', 'edit:lk_my_data']
-}
 
 
 @login_required
 def edit(request, email):
     is_moder = CleanspotUser.objects.get(email=email).user_type == CleanspotUserType.objects.get(name='Moderator')
     if request.method == "POST":
-        edit_form = CleanspotUserEditForm(request.POST, instance=request.user)
+        edit_form = CleanspotUserEditForm(request.POST, instance=get_user(email))
         if edit_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('edit:lk_my_data', args=[get_user(email)]))
     else:
-        edit_form = CleanspotUserEditForm(instance=request.user)
+        edit_form = CleanspotUserEditForm(instance=get_user(email))
     content = {
         'edit_form': edit_form,
         'lk_user_menu': lk_user_menu,
         'user': get_user(email),
         'is_moder': is_moder
     }
-    return render(request, 'profileapp/lk_my_data.html', content)
+    return render(request, 'profileapp/cabinetClientData.html', content)
 
 
 @login_required
 def lk_add_order(request, email):
-    context = {
-        'lk_user_menu': lk_user_menu,
-        'user': get_user(email)
-    }
-    return render(request, 'profileapp/lk_add_order.html', context)
+    # context = {
+    #     'lk_user_menu': lk_user_menu,
+    #     'user': get_user(email)
+    # }
+    return HttpResponseRedirect(reverse('cart:cart_main'))
 
 
 @login_required
