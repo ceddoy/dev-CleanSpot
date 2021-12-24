@@ -11,7 +11,7 @@
                     <h2 class="window-cleaning__ordinary-windows__title">Обычные окна</h2>
                     <label class="window-cleaning__ordinary-windows__glazing-area" for="">
                         1.Площадь остекления м2 ( с одной стороны)
-                        <input type="number" name="{{ windows_form.fields.square_windows.label }}">
+                        <input type="number" name="{{ windows_form.fields.square_windows.label }}" min="0" value="0">
                     </label>
                     <p class="window-cleaning__ordinary-windows__text">Мойка окон</p>
                     <label class="window-cleaning__ordinary-windows__amount" for="">
@@ -29,7 +29,7 @@
                                 min="0"
                                 max="50"
                                 step="1"
-                                value="1"
+                                value="0"
                                 name="{{ windows_form.fields.num_windows.label }}"
                                 readonly
                         />
@@ -56,7 +56,7 @@
                                 min="0"
                                 max="50"
                                 step="1"
-                                value="1"
+                                value="0"
                                 name="{{ windows_form.fields.num_window_frame.label }}"
                                 readonly
                         />
@@ -83,7 +83,7 @@
                                 min="0"
                                 max="50"
                                 step="1"
-                                value="1"
+                                value="0"
                                 name="{{ windows_form.fields.num_stained_windows.label }}"
                                 readonly
                         />
@@ -101,11 +101,11 @@
                     <h2 class="window-cleaning__showcases__title">Витрины (витражи)</h2>
                     <label class="window-cleaning__showcases__glazing-area" for="">
                         Площадь остекления м2 (одна сторона)
-                        <input type="number" name="{{ windows_form.fields.square_showcase.label }}">
+                        <input type="number" name="{{ windows_form.fields.square_showcase.label }}" min="0" value="0">
                     </label>
                     <label class="window-cleaning__showcases__glazing-area" for="">
                         Высота витрин
-                        <input type="number" name="{{ windows_form.fields.height_showcase.label }}">
+                        <input type="number" name="{{ windows_form.fields.height_showcase.label }}" min="0" value="0">
                     </label>
                     <label class="window-cleaning__ordinary-windows__amount" for="">
                         Количество витрин
@@ -122,7 +122,7 @@
                                 min="0"
                                 max="50"
                                 step="1"
-                                value="1"
+                                value="0"
                                 name="{{ windows_form.fields.num_showcase.label }}"
                                 readonly
                         />
