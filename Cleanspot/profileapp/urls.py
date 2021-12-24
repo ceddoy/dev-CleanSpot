@@ -26,5 +26,7 @@ urlpatterns = [
     path('lk_admin_users_del/<int:pk>/', profileapp.lk_admin_users_del, name='lk_admin_users_del'),
     path('lk_admin_users_edit/<int:pk>/', profileapp.lk_admin_users_edit, name='lk_admin_users_edit'),
 
-
+    path('lk_partner_active_request/', profileapp.LkPartnerRequestView.as_view(), name='lk_partner_active_request'),
+    path('lk_partner_active_orders/', profileapp.LkPartnerOrdersView.as_view(), name='lk_partner_active_orders'),
+    path('lk_partner_history_orders/', profileapp.LkPartnerHistoryOrderView.as_view(), name='lk_partner_history_orders'),
 ]

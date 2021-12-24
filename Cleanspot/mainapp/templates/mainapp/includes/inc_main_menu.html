@@ -18,9 +18,15 @@
             Вход
         </a>
     {% else %}
+        {% if user.user_type == 'Cleaner' %}
+            <a href="{% url 'edit:lk_my_data' user.email %}">
+            {{ user.email }}
+        </a>
+        {% else %}
         <a href="{% url 'edit:lk_my_data' user.email %}">
             {{ user.email }}
         </a>
+        {% endif %}
     {% endif %}
 </button>
 
