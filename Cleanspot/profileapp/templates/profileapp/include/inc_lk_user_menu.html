@@ -1,0 +1,12 @@
+{% load static %}
+
+<h2>Личный кабинет</h2>
+<div class="cabinet__options__wrp">
+    <ul class="cabinet__options">
+        {% for key, value in lk_user_menu.items %}
+            <li class="cabinet__options__item {% if request.resolver_match.url_name == key %}active{% endif %}">
+                <a href="{% url value.1 user %}">{{ value.0 }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
