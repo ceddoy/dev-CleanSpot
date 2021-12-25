@@ -13,6 +13,14 @@ class AddPremiseToOrderView(FormView):
     success_url = '/'
     template_name = 'orderapp/orderEntity-rooms.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['service_type_name'] = self.request.session['servise_type']
+        context['days'] = ' '.join(self.request.session['days'])
+        context['cleaning_time'] = self.request.session['cleaning_time']
+        context['number_stuff'] = self.request.session['number_stuff']
+        return context
+
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():
@@ -23,8 +31,8 @@ class AddPremiseToOrderView(FormView):
             else:
                 Order.objects.filter(session_key=Order.objects.get(pk=kwargs['pk']).session_key).update(
                     premise=premise_order)
+                # сессия, чтобы потом id order добавить к анониму
                 request.session['order_id'] = kwargs['pk']
-                print(request.session.__dict__)
                 request.session.modified = True
 
             # Выводим страницу со сформированным заказом
