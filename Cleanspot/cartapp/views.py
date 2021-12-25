@@ -13,7 +13,7 @@ from django.views.generic.edit import FormView
 from cartapp.forms import AddToCartForm, AddToCartWindowsForm, AddDateToCartForm
 
 from cartapp.models import Service, ServiceType, UserTypeForServiceType, Cart, CartService, DaysOfWeek, WindowWashing
-from common.const import MONTH_LIST
+from common.const import MONTH_LIST, CLEANING_TIME_CHOICES
 from orderapp.models import Order
 
 
@@ -59,13 +59,19 @@ class ShowListServicesView(FormView):
                     Cart.objects.get(id=cart.id).services.add(CartService.objects.get(cart=cart, service=service))
             self.cart_id = cart.id
             if cleaning_days:
+                request.session['days'] = []
                 for day in cleaning_days:
                     Cart.objects.get(id=cart.id).cleaning_days.add(DaysOfWeek.objects.get(short_title=day))
+                    request.session['days'].append(day.short_title)
             if number_stuff:
+                request.session['number_stuff'] = number_stuff
                 cart.number_stuff = number_stuff
             if comment:
                 cart.comment = comment
             if clean_time:
+                for time_of_day in CLEANING_TIME_CHOICES:
+                    if time_of_day[0] == clean_time:
+                        request.session['cleaning_time'] = time_of_day[1]
                 cart.cleaning_time = clean_time
             if is_windows or \
                     ('servisetype_slug' in self.kwargs and self.kwargs['servisetype_slug'] == 'window_cleaning'):
@@ -123,6 +129,7 @@ class ShowListServicesView(FormView):
             'service_type_name': service_type_name,
             'windows_form': windows_form,
         })
+        self.request.session['servise_type'] = service_type_name
         return context
 
     def get_template_names(self):
@@ -133,25 +140,6 @@ class ShowListServicesView(FormView):
             service_type = ServiceType.objects.filter(user_type_for_service_type__name=user_type)[0].name
         template_name = f'cartapp/{user_type}_{service_type}.html'
         return [template_name]
-
-
-# @method_decorator(csrf_exempt, name='dispatch')
-# class AddDateToCartView(FormView):
-#     form_class = AddDateToCartForm
-#     template_name = 'cartapp/orderEntity-calendar.html'
-#     success_url = '/'
-#
-#     def post(self, request, *args, **kwargs):
-#         print(request.POST)
-#         form = super().get_form()
-#         if form.is_valid():
-#             date = form.cleaned_data.pop('date_order')
-#             is_other_date = form.cleaned_data.pop('is_other_date')
-#             cart_id = get_object_or_404(Cart, pk=kwargs['pk'])
-#             Cart.objects.filter(pk=kwargs['pk']).update(date_order=date, is_other_date=is_other_date)
-#             return self.form_valid(form)
-#         else:
-#             return self.form_invalid(form)
 
 
 class CalendarTableFormView(FormView):
