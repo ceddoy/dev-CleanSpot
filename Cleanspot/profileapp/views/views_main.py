@@ -9,11 +9,19 @@ from django.views.generic import TemplateView
 
 from authapp.models import CleanspotUserType, CleanspotUser
 from authapp.services import send_verify_email
-from common.menu import LK_ADMIN_MAIN_MENU, LK_ADMIN_MENU, lk_user_menu
+from common.menu import LK_MAIN_MENU, LK_ADMIN_MENU
 from mainapp.models import Premises
 from profileapp.forms import CleanspotUserEditForm, CleanspotUserPasswordChangeForm, AddCleanerForm, EditCleanerForm, \
     EditUsersForm, CleanspotUserAddOrEditPremise
 from profileapp.services import get_user
+
+lk_user_menu = {
+    'lk_add_order': ['Создать заказ', 'edit:lk_add_order'],
+    'lk_my_premises': ['Мои помещения', 'edit:lk_my_premises'],
+    'lk_current_order': ['Текущий заказ', 'edit:lk_current_order'],
+    'lk_order_history': ['История заказов', 'edit:lk_order_history'],
+    'lk_my_data': ['Мои данные', 'edit:lk_my_data']
+}
 
 
 @login_required
@@ -152,7 +160,7 @@ def lk_admin_cleaner_add(request, email):
         'form': add_form,
         'lk_admin_menu': LK_ADMIN_MENU,
         'user': get_user(email),
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
     }
     return render(request, 'profileapp/lk_admin_add.html', context)
 
@@ -165,7 +173,7 @@ def lk_admin_cleaner_list(request, email):
     context = {
         'lk_admin_menu': LK_ADMIN_MENU,
         'user': get_user(email),
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
         'page_obj': page_obj,
     }
     return render(request, 'profileapp/lk_admin_edit.html', context)
@@ -191,7 +199,7 @@ def lk_admin_cleaner_edit(request, email, pk):
         'form': edit_form,
         'moder_pk': moder_pk,
         'lk_admin_menu': LK_ADMIN_MENU,
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
         'user': get_user(email),
     }
     return render(request, 'profileapp/lk_admin_add.html', context)
@@ -201,7 +209,7 @@ def lk_admin_history(request, email):
     # TODO: Создать страницу просмотра всех заказов в ЛК администратора
     context = {
         'lk_admin_menu': LK_ADMIN_MENU,
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
         'user': get_user(email)
     }
     return render(request, 'profileapp/lk_admin_history.html', context)
@@ -211,7 +219,7 @@ def lk_admin_price(request, email):
     # TODO: Создать страницу с прайсом в ЛК администратора
     context = {
         'lk_admin_menu': LK_ADMIN_MENU,
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
         'user': get_user(email)
     }
     return render(request, 'profileapp/lk_admin_price.html', context)
@@ -225,7 +233,7 @@ def lk_admin_users_list(request, email):
     page_obj = paginator.get_page(page_number)
     context = {
         'lk_admin_menu': LK_ADMIN_MENU,
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
         'user': get_user(email),
         'page_obj': page_obj,
     }
@@ -249,7 +257,7 @@ def lk_admin_users_edit(request, email, pk):
     context = {
         'form': edit_form,
         'lk_admin_menu': LK_ADMIN_MENU,
-        'lk_admin_main_menu': LK_ADMIN_MAIN_MENU,
+        'lk_admin_main_menu': LK_MAIN_MENU,
         'user': get_user(email)
     }
     return render(request, 'profileapp/lk_admin_users_edit.html', context)

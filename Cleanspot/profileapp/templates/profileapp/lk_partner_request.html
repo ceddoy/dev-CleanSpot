@@ -1,0 +1,57 @@
+{% extends 'profileapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="cabinet-main">
+        <h2>Личный кабинет партнера</h2>
+
+        {% include 'profileapp/include/inc_lk_partner_menu.html' %}
+
+        <div class="orders">
+            {% for order in page_obj.object_list %}
+                <input class="orders__item__more" type="checkbox" id="faq-{{ forloop.counter }}">
+                <div class="orders__item">
+                    <label for="faq-{{ forloop.counter }}"></label>
+                    <div class="orders__item__content">
+                        <div class="orders__item__content_wrp">
+                            <h3 class="orders__item__number">№ {{ order.id }}</h3>
+                            {% if order.cart.date_order %}
+                                <p class="orders__item__day">{{ order.cart.date_order|date:"d E, l"|lower }}</p>
+                            {% endif %}
+                            {% if order.cart.cleaning_time %}
+                                <p class="orders__item__day">{{ order.cart.get_cleaning_days }}</p>
+                                <p class="orders__item__time">{{ order.cart.get_cleaning_time_display }}</p>
+                            {% endif %}
+                            <p class="orders__item__adress">{{ order.premise }}</p>
+                            <p class="orders__item__status">Выполняется поиск клинера</p>
+                        </div>
+
+                        <div class="orders__item__buttons">
+                            <button class="button button_lightgreen__filled">Подтвердить</button>
+                            <button class="button button_lightgreen__filled">Отказаться</button>
+                            <button class="button button_lightgreen__filled">Стоимость заказа для клиента</button>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <ul class="pagination">
+        <button type="button" class="pagination__btn"
+                {% if page_obj.has_previous %}onclick="window.location.href='?page={{ page_obj.previous_page_number }}'"{% endif %}>
+            &lt
+        </button>
+        {% for num in page_obj.paginator.page_range %}
+            <button type="button" class="pagination__numbers {% if page_obj.number == num %}active{% endif %}"
+                    {% if page_obj.number != num %}
+                        onclick="window.location.href='?page={{ num }}'"
+                    {% endif %}>{{ num }}</button>
+        {% endfor %}
+        <button type="button" class="pagination__btn"
+                {% if page_obj.has_next %}onclick="window.location.href='?page={{ page_obj.next_page_number }}'"{% endif %}>
+            &gt
+        </button>
+    </ul>
+{% endblock content %}

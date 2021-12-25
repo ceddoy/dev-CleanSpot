@@ -18,9 +18,14 @@
             Вход
         </a>
     {% else %}
-        <a href="{% url 'edit:lk_my_data' user.email %}">
-            {{ user.email }}
-        </a>
+        {% if user.user_type.name == 'Cleaner' %}
+            <a href="{% url 'edit:lk_partner_active_request' user.email %}">
+                {{ user.email }}
+            </a>
+        {% else %}
+            <a href="{% url 'edit:lk_my_data' user.email %}">
+                {{ user.email }}
+            </a>
+        {% endif %}
     {% endif %}
 </button>
-
