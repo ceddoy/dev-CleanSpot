@@ -23,7 +23,7 @@ class ShowListServicesView(FormView):
     cart_id = None
 
     def get_success_url(self):
-        service_type = self.kwargs['servisetype_slug']
+        service_type = self.request.session['type_servise']
         if service_type == 'daily_as_scheduled':
             if self.request.user.is_authenticated:
                 order = Order.objects.create(client=self.request.user, cart=Cart.objects.get(pk=self.cart_id))
@@ -104,7 +104,8 @@ class ShowListServicesView(FormView):
             kwargs['type_servise'] = self.kwargs['servisetype_slug']
         else:
             type_service = ServiceType.objects.filter(user_type_for_service_type=user_type)[0]
-            kwargs['type_servise'] = type_service
+            kwargs['type_servise'] = type_service.name
+        self.request.session['type_servise'] = kwargs['type_servise']
         kwargs['services_dict'] = Service.objects.filter(service_type__pk=type_service.pk).select_related()
         return kwargs
 
