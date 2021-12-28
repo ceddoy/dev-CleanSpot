@@ -1,52 +1,8 @@
+{% extends 'cartapp/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Order</title>
-    <link rel="stylesheet" href="{% static 'css/orderEntity-calendar.css' %}"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
-            rel="stylesheet"
-    />
-    <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
-            rel="stylesheet"
-    />
-    <script src="https://kit.fontawesome.com/6b05dc3d8e.js"></script>
-</head>
-<body>
-<!-- хедер -->
-<table class="ordering-entity__header container">
-    <tr>
-        <td class="table-cell"><a href="{% url 'main:main' %}"><img src="{% static 'img/logo.png' %}" alt="logo"/></a></td>
-        <td class="table-cell">
-            <p class="table-cell__cleaning-type">Ежедневная по&nbsp;графику</p>
-            <p class="table-text">Тип уборки</p>
-        </td>
-        <td class="table-cell">
-            <p class="table-cell__days-week">Пн Ср Пт</p>
-            <p class="table-text">Дни недели</p>
-        </td>
-        <td class="table-cell">
-            <p class="table-cell__cleaning-time">15.00 - 19.00</p>
-            <p class="table-text">Время уборки</p>
-        </td>
-        <td class="table-cell">
-            <p class="table-cell__number-staff">3</p>
-            <p class="table-text">Кол-во персонала</p>
-        </td>
-        <td class="table-cell">
-            <p class="table-cell__price">от 5000 руб</p>
-            <p class="table-text">СТОИМОСТЬ</p>
-        </td>
-    </tr>
-</table>
+{% block content %}
+
 <div class="calendar-form">
     <section class="cleaning-date">
         <h2 class="cleaning-date__title">Выберите дату уборки</h2>
@@ -137,6 +93,4 @@
         <button class="order-button">Далее</button>
     </section>
 </div>
-<script src="{% static 'js/cart_calendar.js' %}"></script>
-</body>
-</html>
+{% endblock content %}
