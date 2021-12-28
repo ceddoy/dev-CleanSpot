@@ -155,7 +155,7 @@ class CalendarTableFormView(FormView):
             'calendar': calendar_list,
             'year': int(self.kwargs['year']),
             'month': MONTH_LIST[int(self.kwargs['month'])],
-            'now': datetime.datetime.now(),
+            'now': datetime.datetime.now()
         })
         return context
 
@@ -174,4 +174,7 @@ def add_date_to_cart(request, *args, **kwargs):
             order = Order.objects.create(session_key=Cart.objects.get(pk=kwargs['pk']).session_key,
                                          cart=Cart.objects.get(id=kwargs['pk']))
         return HttpResponseRedirect(reverse('order:order_premise', args=[order.id]))
-    return render(request, 'cartapp/orderEntity-calendar.html')
+    context = {
+        'service_type_name': request.session['servise_type']
+    }
+    return render(request, 'cartapp/orderEntity-calendar.html', context)
